@@ -300,5 +300,17 @@ namespace DesignForm.Forms
 				e.SuppressKeyPress = true;
 			}
 		}
+
+		private void btnCapnhat_Click(object sender, EventArgs e)
+		{
+			try
+			{
+
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
 	}
 }

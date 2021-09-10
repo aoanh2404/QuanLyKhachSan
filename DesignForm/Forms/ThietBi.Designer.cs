@@ -36,7 +36,7 @@
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.button4 = new System.Windows.Forms.Button();
-			this.button5 = new System.Windows.Forms.Button();
+			this.btnCapnhat = new System.Windows.Forms.Button();
 			this.button6 = new System.Windows.Forms.Button();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.cbHienTrangTb = new System.Windows.Forms.ComboBox();
@@ -108,7 +108,7 @@
 			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel2.Controls.Add(this.button4);
-			this.panel2.Controls.Add(this.button5);
+			this.panel2.Controls.Add(this.btnCapnhat);
 			this.panel2.Controls.Add(this.button6);
 			this.panel2.Location = new System.Drawing.Point(8, 177);
 			this.panel2.Name = "panel2";
@@ -129,18 +129,19 @@
 			this.button4.Text = "Xoá";
 			this.button4.UseVisualStyleBackColor = true;
 			// 
-			// button5
+			// btnCapnhat
 			// 
-			this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-			this.button5.Location = new System.Drawing.Point(188, 4);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(88, 28);
-			this.button5.TabIndex = 0;
-			this.button5.TabStop = false;
-			this.button5.Text = "Cập nhật";
-			this.button5.UseVisualStyleBackColor = true;
+			this.btnCapnhat.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnCapnhat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnCapnhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			this.btnCapnhat.Location = new System.Drawing.Point(188, 4);
+			this.btnCapnhat.Name = "btnCapnhat";
+			this.btnCapnhat.Size = new System.Drawing.Size(88, 28);
+			this.btnCapnhat.TabIndex = 0;
+			this.btnCapnhat.TabStop = false;
+			this.btnCapnhat.Text = "Cập nhật";
+			this.btnCapnhat.UseVisualStyleBackColor = true;
+			this.btnCapnhat.Click += new System.EventHandler(this.btnCapnhat_Click);
 			// 
 			// button6
 			// 
@@ -399,7 +400,7 @@
 		private System.Windows.Forms.ErrorProvider errorProvider1;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.Button btnCapnhat;
 		private System.Windows.Forms.Button button6;
 		private System.Windows.Forms.Panel panel4;
 		private System.Windows.Forms.TextBox txtHangsx;
