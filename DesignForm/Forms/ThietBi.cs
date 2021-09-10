@@ -40,6 +40,7 @@ namespace DesignForm.Forms
 			}
 
 			this.txtTenTb.AutoCompleteCustomSource = col;
+			this.txtTenTb.AutoCompleteMode = AutoCompleteMode.None;
 			SetDefaultFocus();
 		}
 		private void DataGridView1_Key(object sender, KeyEventArgs e)
@@ -191,97 +192,85 @@ namespace DesignForm.Forms
 
 		private void txtMaTb_TextChanged(object sender, EventArgs e)
 		{
-			if (this.txtMaTb.Text.Trim().Equals(string.Empty))
+			if (this.chkSearch.Checked && this.rdMatb.Checked)
 			{
-				return;
-			}
-
-			if (this.txtMaTb.Text.Trim().Length > 2)
-			{
-				if (this.txtMaTb.Text.Trim().Substring(0, 2).Equals(this.dataGridView1.CurrentRow.Cells["MATB"].Value.ToString().Substring(0, 2)))
+				if (this.txtMaTb.Text.Trim().Equals(string.Empty))
 				{
 					return;
 				}
-			}
-			DataTable dtGird = new DataTable();
 
-			dtGird = this.dtdata.Clone();
+				DataTable dtGird = new DataTable();
 
-			DataRow[] dr1 = new DataRow[] { };
+				dtGird = this.dtdata.Clone();
 
-			string strSearch = string.Empty;
-			if (this.txtMaTb.Text.Trim().Length <= 2)
-			{
-				strSearch = this.txtMaTb.Text.Trim();
-			}
-			else
-			{
-				strSearch = this.txtMaTb.Text.Trim().Substring(0, 2);
-			}
+				DataRow[] dr1 = new DataRow[] { };
 
-			dr1 = this.dtdata.Select("MATB LIKE'" + strSearch + "%'", string.Empty);
+				dr1 = this.dtdata.Select("MATB LIKE'" + this.txtMaTb.Text.Trim()+ "%'", string.Empty);
 
-			foreach (DataRow dr in dr1)
-			{
-				dtGird.Rows.Add(dr.ItemArray);
-			}
-
-			SetDataGrid(dtGird);
-
-			foreach (Control ctrl in this.panel4.Controls)
-			{
-				if ((ctrl is TextBox) && !ctrl.Equals(this.txtMaTb))
+				foreach (DataRow dr in dr1)
 				{
-					(ctrl as TextBox).Text = string.Empty;
+					dtGird.Rows.Add(dr.ItemArray);
 				}
 
-				if ((ctrl is ComboBox))
-				{
-					(ctrl as ComboBox).SelectedIndex = -1;
-				}
+				SetDataGrid(dtGird);
 
-				if (ctrl is DateTimePicker)
+				foreach (Control ctrl in this.panel4.Controls)
 				{
-					(ctrl as DateTimePicker).Value = DateTime.Now;
+					if ((ctrl is TextBox) && !ctrl.Equals(this.txtMaTb))
+					{
+						(ctrl as TextBox).Text = string.Empty;
+					}
+
+					if ((ctrl is ComboBox))
+					{
+						(ctrl as ComboBox).SelectedIndex = -1;
+					}
+
+					if (ctrl is DateTimePicker)
+					{
+						(ctrl as DateTimePicker).Value = DateTime.Now;
+					}
 				}
 			}
 		}
 
 		private void txtTenTb_Validating(object sender, CancelEventArgs e)
 		{
-
-			SetDataGrid(this.dtdata.Clone());
-
-			DataTable dtGird = new DataTable();
-
-			dtGird = this.dtdata.Clone();
-
-			DataRow[] dr1 = new DataRow[] { };
-
-			dr1 = this.dtdata.Select("TENTV LIKE'" + this.txtTenTb.Text.Trim() + "%'", string.Empty);
-
-			foreach (DataRow dr in dr1)
+			if (this.chkSearch.Checked && this.rdTentb.Checked)
 			{
-				dtGird.Rows.Add(dr.ItemArray);
-			}
+				SetDataGrid(this.dtdata.Clone());
 
-			SetDataGrid(dtGird);
+				DataTable dtGird = new DataTable();
 
-			foreach (Control ctrl in this.panel4.Controls)
-			{
-				if ((ctrl is TextBox) && !ctrl.Equals(this.txtTenTb))
+				dtGird = this.dtdata.Clone();
+
+				DataRow[] dr1 = new DataRow[] { };
+
+				dr1 = this.dtdata.Select("TENTV LIKE'" + this.txtTenTb.Text.Trim() + "%'", string.Empty);
+
+				foreach (DataRow dr in dr1)
 				{
-					(ctrl as TextBox).Text = string.Empty;
+					dtGird.Rows.Add(dr.ItemArray);
 				}
 
-				if ((ctrl is ComboBox))
-				{
-					(ctrl as ComboBox).SelectedIndex = -1;
-				}
+				SetDataGrid(dtGird);
 
-				if (ctrl is DateTimePicker)
+				foreach (Control ctrl in this.panel4.Controls)
 				{
-					(ctrl as DateTimePicker).Value = DateTime.Now;
+					if ((ctrl is TextBox) && !ctrl.Equals(this.txtTenTb))
+					{
+						(ctrl as TextBox).Text = string.Empty;
+					}
+
+					if ((ctrl is ComboBox))
+					{
+						(ctrl as ComboBox).SelectedIndex = -1;
+					}
+
+					if (ctrl is DateTimePicker)
+					{
+						(ctrl as DateTimePicker).Value = DateTime.Now;
+					}
 				}
 			}
 		}
@@ -310,6 +299,86 @@ namespace DesignForm.Forms
 			catch (Exception)
 			{
 				throw;
+			}
+		}
+
+		private void chkSearch_CheckedChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				if(this.chkSearch.Checked)
+				{
+					this.panel1.Enabled = true;
+					this.txtTenTb.AutoCompleteMode = AutoCompleteMode.Suggest;
+				}
+				else
+				{
+					this.panel1.Enabled = false;
+					this.txtTenTb.AutoCompleteMode = AutoCompleteMode.None;
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		private void rd_CheckedChanged(object sender, EventArgs e)
+		{
+			if(this.chkSearch.Checked && this.rdTentb.Checked)
+			{
+				this.txtTenTb.AutoCompleteMode = AutoCompleteMode.Suggest;
+			}
+			else
+			{
+				this.txtTenTb.AutoCompleteMode = AutoCompleteMode.None;
+			}
+
+			ClearMH();
+			SetDataGrid(this.dtdata);
+		}
+
+		private void txtMaP_TextChanged(object sender, EventArgs e)
+		{
+			if (this.chkSearch.Checked && this.rdMaphong.Checked)
+			{
+				if (this.txtMaP.Text.Trim().Equals(string.Empty))
+				{
+					return;
+				}
+
+				DataTable dtGird = new DataTable();
+
+				dtGird = this.dtdata.Clone();
+
+				DataRow[] dr1 = new DataRow[] { };
+
+				dr1 = this.dtdata.Select("MAPHONG LIKE'" + this.txtMaP.Text.Trim() + "%'", string.Empty);
+
+				foreach (DataRow dr in dr1)
+				{
+					dtGird.Rows.Add(dr.ItemArray);
+				}
+
+				SetDataGrid(dtGird);
+
+				foreach (Control ctrl in this.panel4.Controls)
+				{
+					if ((ctrl is TextBox) && !ctrl.Equals(this.txtMaP))
+					{
+						(ctrl as TextBox).Text = string.Empty;
+					}
+
+					if ((ctrl is ComboBox))
+					{
+						(ctrl as ComboBox).SelectedIndex = -1;
+					}
+
+					if (ctrl is DateTimePicker)
+					{
+						(ctrl as DateTimePicker).Value = DateTime.Now;
+					}
+				}
 			}
 		}
 	}

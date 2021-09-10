@@ -56,10 +56,16 @@
 			this.txtTenTb = new System.Windows.Forms.TextBox();
 			this.label16 = new System.Windows.Forms.Label();
 			this.btnReset = new System.Windows.Forms.Button();
+			this.chkSearch = new System.Windows.Forms.CheckBox();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.rdMaphong = new System.Windows.Forms.RadioButton();
+			this.rdTentb = new System.Windows.Forms.RadioButton();
+			this.rdMatb = new System.Windows.Forms.RadioButton();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.panel2.SuspendLayout();
 			this.panel4.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// dataGridView1
@@ -216,6 +222,7 @@
 			this.txtMaP.Name = "txtMaP";
 			this.txtMaP.Size = new System.Drawing.Size(189, 24);
 			this.txtMaP.TabIndex = 13;
+			this.txtMaP.TextChanged += new System.EventHandler(this.txtMaP_TextChanged);
 			// 
 			// lblNgayLapTb
 			// 
@@ -355,9 +362,10 @@
 			// 
 			// btnReset
 			// 
+			this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-			this.btnReset.Location = new System.Drawing.Point(8, 3);
+			this.btnReset.Location = new System.Drawing.Point(737, 6);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.Size = new System.Drawing.Size(88, 28);
 			this.btnReset.TabIndex = 35;
@@ -366,11 +374,70 @@
 			this.btnReset.UseVisualStyleBackColor = true;
 			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
 			// 
+			// chkSearch
+			// 
+			this.chkSearch.AutoSize = true;
+			this.chkSearch.Location = new System.Drawing.Point(15, 8);
+			this.chkSearch.Name = "chkSearch";
+			this.chkSearch.Size = new System.Drawing.Size(88, 22);
+			this.chkSearch.TabIndex = 36;
+			this.chkSearch.Text = "Tìm kiếm";
+			this.chkSearch.UseVisualStyleBackColor = true;
+			this.chkSearch.CheckedChanged += new System.EventHandler(this.chkSearch_CheckedChanged);
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.rdMaphong);
+			this.panel1.Controls.Add(this.rdTentb);
+			this.panel1.Controls.Add(this.rdMatb);
+			this.panel1.Enabled = false;
+			this.panel1.Location = new System.Drawing.Point(109, 0);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(412, 36);
+			this.panel1.TabIndex = 37;
+			// 
+			// rdMaphong
+			// 
+			this.rdMaphong.AutoSize = true;
+			this.rdMaphong.Location = new System.Drawing.Point(283, 7);
+			this.rdMaphong.Name = "rdMaphong";
+			this.rdMaphong.Size = new System.Drawing.Size(92, 22);
+			this.rdMaphong.TabIndex = 2;
+			this.rdMaphong.Text = "Mã phòng";
+			this.rdMaphong.UseVisualStyleBackColor = true;
+			this.rdMaphong.CheckedChanged += new System.EventHandler(this.rd_CheckedChanged);
+			// 
+			// rdTentb
+			// 
+			this.rdTentb.AutoSize = true;
+			this.rdTentb.Location = new System.Drawing.Point(151, 7);
+			this.rdTentb.Name = "rdTentb";
+			this.rdTentb.Size = new System.Drawing.Size(97, 22);
+			this.rdTentb.TabIndex = 1;
+			this.rdTentb.Text = "Tên thiết bị";
+			this.rdTentb.UseVisualStyleBackColor = true;
+			this.rdTentb.CheckedChanged += new System.EventHandler(this.rd_CheckedChanged);
+			// 
+			// rdMatb
+			// 
+			this.rdMatb.AutoSize = true;
+			this.rdMatb.Checked = true;
+			this.rdMatb.Location = new System.Drawing.Point(19, 7);
+			this.rdMatb.Name = "rdMatb";
+			this.rdMatb.Size = new System.Drawing.Size(93, 22);
+			this.rdMatb.TabIndex = 0;
+			this.rdMatb.TabStop = true;
+			this.rdMatb.Text = "Mã thiết bị";
+			this.rdMatb.UseVisualStyleBackColor = true;
+			this.rdMatb.CheckedChanged += new System.EventHandler(this.rd_CheckedChanged);
+			// 
 			// ThietBi
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(833, 346);
+			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.chkSearch);
 			this.Controls.Add(this.btnReset);
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.dataGridView1);
@@ -391,7 +458,10 @@
 			this.panel2.ResumeLayout(false);
 			this.panel4.ResumeLayout(false);
 			this.panel4.PerformLayout();
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -420,5 +490,10 @@
 		private System.Windows.Forms.DateTimePicker dateNgayLapTB;
 		private System.Windows.Forms.ComboBox cbHienTrangTb;
 		private System.Windows.Forms.Button btnReset;
+		private System.Windows.Forms.CheckBox chkSearch;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.RadioButton rdMaphong;
+		private System.Windows.Forms.RadioButton rdTentb;
+		private System.Windows.Forms.RadioButton rdMatb;
 	}
 }
