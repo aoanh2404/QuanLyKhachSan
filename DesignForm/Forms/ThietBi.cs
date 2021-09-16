@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,6 +43,7 @@ namespace DesignForm.Forms
 			this.txtTenTb.AutoCompleteCustomSource = col;
 			this.txtTenTb.AutoCompleteMode = AutoCompleteMode.None;
 			SetDefaultFocus();
+			SaveMH();
 		}
 		private void DataGridView1_Key(object sender, KeyEventArgs e)
 		{
@@ -63,6 +65,7 @@ namespace DesignForm.Forms
 				{
 					this.dateNgayLapTB.Value = DateTime.Now;
 				}
+				SaveMH();
 			}
 			catch (Exception)
 			{
@@ -90,6 +93,7 @@ namespace DesignForm.Forms
 					this.dateNgayLapTB.Value = DateTime.Now;
 
 				}
+				SaveMH();
 			}
 			catch (Exception)
 			{
@@ -205,7 +209,7 @@ namespace DesignForm.Forms
 
 				DataRow[] dr1 = new DataRow[] { };
 
-				dr1 = this.dtdata.Select("MATB LIKE'" + this.txtMaTb.Text.Trim()+ "%'", string.Empty);
+				dr1 = this.dtdata.Select("MATB LIKE'" + this.txtMaTb.Text.Trim() + "%'", string.Empty);
 
 				foreach (DataRow dr in dr1)
 				{
@@ -294,6 +298,40 @@ namespace DesignForm.Forms
 		{
 			try
 			{
+				ClearError();
+
+				if (!CheckERorr())
+				{
+					MessageBox.Show("Chưa nhập đủ thông tin hoặc đã nhập sai!");
+					return;
+				}
+
+				if (IsChangedMH())
+				{
+					MessageBox.Show("Không có dữ liệu thay đổi!");
+					return;
+				}
+
+				DialogResult dlg = MessageBox.Show("Bạn có chắc muốn sữa không!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+				if (dlg == DialogResult.Yes)
+				{
+					StringBuilder sbSQL = new StringBuilder();
+					sbSQL.Append("UPDATE THIETBI SET	MATB = @MATB, TENTV = @TENTV, NHASX = @NHASX, GIA = @GIA, NGAYNHAP = @NGAYNHAP, TINHTRANG = @TINHTRANG;");
+
+					if (this.txtMaP.Tag.Equals(string.Empty) && !string.IsNullOrEmpty(this.txtMaP.Text))
+					{
+						sbSQL.Append("INSERT INTO QUANLITB VALUES(@MAPHONG, @MATB, @NGAYLAP);");
+					}
+
+					SqlConnection conn = Database.GetDBConnection();
+					conn.Open();
+					SqlCommand cmd = new SqlCommand(sbSQL.ToString(), conn);
+					cmd.ExecuteNonQuery();
+					conn.Close();
+					LoadDataGrid();
+					MessageBox.Show("Thực hiện thành công!");
+				}
 
 			}
 			catch (Exception)
@@ -306,7 +344,7 @@ namespace DesignForm.Forms
 		{
 			try
 			{
-				if(this.chkSearch.Checked)
+				if (this.chkSearch.Checked)
 				{
 					this.panel1.Enabled = true;
 					this.txtTenTb.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -325,7 +363,7 @@ namespace DesignForm.Forms
 
 		private void rd_CheckedChanged(object sender, EventArgs e)
 		{
-			if(this.chkSearch.Checked && this.rdTentb.Checked)
+			if (this.chkSearch.Checked && this.rdTentb.Checked)
 			{
 				this.txtTenTb.AutoCompleteMode = AutoCompleteMode.Suggest;
 			}
@@ -381,5 +419,118 @@ namespace DesignForm.Forms
 				}
 			}
 		}
+
+		private void SaveMH()
+		{
+			foreach (Control ctrl in this.panel4.Controls)
+			{
+				if ((ctrl is TextBox))
+				{
+					(ctrl as TextBox).Tag = (ctrl as TextBox).Text;
+				}
+
+				if ((ctrl is DateTimePicker))
+				{
+					(ctrl as DateTimePicker).Tag = (ctrl as DateTimePicker).Value;
+				}
+
+				if ((ctrl is ComboBox))
+				{
+					(ctrl as ComboBox).Tag = (ctrl as ComboBox).SelectedIndex;
+				}
+
+				if ((ctrl is RadioButton))
+				{
+					(ctrl as RadioButton).Tag = (ctrl as RadioButton).Checked;
+				}
+			}
+		}
+
+		private bool IsChangedMH()
+		{
+			foreach (Control ctrl in this.panel4.Controls)
+			{
+				if ((ctrl is TextBox))
+				{
+					if (!Comparer.Equals((ctrl as TextBox).Tag, (ctrl as TextBox).Text))
+					{
+						return false;
+					}
+				}
+
+				if ((ctrl is DateTimePicker))
+				{
+					if (!Comparer.Equals((ctrl as DateTimePicker).Tag, (ctrl as DateTimePicker).Value))
+					{
+						return false;
+					}
+				}
+
+				if ((ctrl is ComboBox))
+				{
+					if (!Comparer.Equals((ctrl as ComboBox).Tag, (ctrl as ComboBox).SelectedIndex))
+					{
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
+		private bool CheckERorr()
+		{
+			ArrayList ctrlEror = new ArrayList();
+
+			foreach (Control ctrl in this.Controls)
+			{
+				if ((ctrl is TextBox) && !ctrl.Equals(this.txtMaP) && string.IsNullOrEmpty(ctrl.Text.Trim()))
+				{
+					ctrlEror.Add(ctrl);
+				}
+
+				if ((ctrl is ComboBox) && string.IsNullOrEmpty(ctrl.Text.Trim()))
+				{
+					ctrlEror.Add(ctrl);
+				}
+			}
+
+			if (ctrlEror.Count > 0)
+			{
+				for (int i = 0; i < ctrlEror.Count; i++)
+				{
+					this.errorProvider1.SetError((ctrlEror[i] as Control), "ERROR");
+				}
+				(ctrlEror[0] as Control).Focus();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+
+		private void ClearError()
+		{
+			foreach (Control ctrl in this.Controls)
+			{
+				if ((ctrl is TextBox))
+				{
+					this.errorProvider1.SetError((ctrl as Control), string.Empty);
+				}
+
+				if ((ctrl is DateTimePicker))
+				{
+					this.errorProvider1.SetError((ctrl as Control), string.Empty);
+				}
+
+				if ((ctrl is ComboBox))
+				{
+					this.errorProvider1.SetError((ctrl as Control), string.Empty);
+				}
+			}
+		}
+
+
 	}
 }
