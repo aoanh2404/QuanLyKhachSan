@@ -35,9 +35,9 @@
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.button4 = new System.Windows.Forms.Button();
+			this.btnXoa = new System.Windows.Forms.Button();
 			this.btnCapnhat = new System.Windows.Forms.Button();
-			this.button6 = new System.Windows.Forms.Button();
+			this.btnThem = new System.Windows.Forms.Button();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.cbHienTrangTb = new System.Windows.Forms.ComboBox();
 			this.dateNgayLapTB = new System.Windows.Forms.DateTimePicker();
@@ -113,27 +113,28 @@
 			// 
 			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel2.Controls.Add(this.button4);
+			this.panel2.Controls.Add(this.btnXoa);
 			this.panel2.Controls.Add(this.btnCapnhat);
-			this.panel2.Controls.Add(this.button6);
+			this.panel2.Controls.Add(this.btnThem);
 			this.panel2.Location = new System.Drawing.Point(8, 177);
 			this.panel2.Name = "panel2";
 			this.panel2.Padding = new System.Windows.Forms.Padding(2);
 			this.panel2.Size = new System.Drawing.Size(823, 35);
 			this.panel2.TabIndex = 6;
 			// 
-			// button4
+			// btnXoa
 			// 
-			this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-			this.button4.Location = new System.Drawing.Point(546, 3);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(88, 28);
-			this.button4.TabIndex = 2;
-			this.button4.TabStop = false;
-			this.button4.Text = "Xoá";
-			this.button4.UseVisualStyleBackColor = true;
+			this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			this.btnXoa.Location = new System.Drawing.Point(546, 3);
+			this.btnXoa.Name = "btnXoa";
+			this.btnXoa.Size = new System.Drawing.Size(88, 28);
+			this.btnXoa.TabIndex = 2;
+			this.btnXoa.TabStop = false;
+			this.btnXoa.Text = "Xoá";
+			this.btnXoa.UseVisualStyleBackColor = true;
+			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
 			// 
 			// btnCapnhat
 			// 
@@ -149,18 +150,19 @@
 			this.btnCapnhat.UseVisualStyleBackColor = true;
 			this.btnCapnhat.Click += new System.EventHandler(this.btnCapnhat_Click);
 			// 
-			// button6
+			// btnThem
 			// 
-			this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-			this.button6.Location = new System.Drawing.Point(367, 3);
-			this.button6.Name = "button6";
-			this.button6.Size = new System.Drawing.Size(88, 28);
-			this.button6.TabIndex = 1;
-			this.button6.TabStop = false;
-			this.button6.Text = "Thêm";
-			this.button6.UseVisualStyleBackColor = true;
+			this.btnThem.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			this.btnThem.Location = new System.Drawing.Point(367, 3);
+			this.btnThem.Name = "btnThem";
+			this.btnThem.Size = new System.Drawing.Size(88, 28);
+			this.btnThem.TabIndex = 1;
+			this.btnThem.TabStop = false;
+			this.btnThem.Text = "Thêm";
+			this.btnThem.UseVisualStyleBackColor = true;
+			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
 			// 
 			// panel4
 			// 
@@ -223,6 +225,7 @@
 			this.txtMaP.Size = new System.Drawing.Size(189, 24);
 			this.txtMaP.TabIndex = 13;
 			this.txtMaP.TextChanged += new System.EventHandler(this.txtMaP_TextChanged);
+			this.txtMaP.Validated += new System.EventHandler(this.txtMaP_Validated);
 			// 
 			// lblNgayLapTb
 			// 
@@ -327,6 +330,7 @@
 			this.txtMaTb.Size = new System.Drawing.Size(190, 24);
 			this.txtMaTb.TabIndex = 1;
 			this.txtMaTb.TextChanged += new System.EventHandler(this.txtMaTb_TextChanged);
+			this.txtMaTb.Validated += new System.EventHandler(this.txtMaTb_Validated);
 			// 
 			// label15
 			// 
@@ -405,7 +409,7 @@
 			this.rdMaphong.TabIndex = 2;
 			this.rdMaphong.Text = "Mã phòng";
 			this.rdMaphong.UseVisualStyleBackColor = true;
-			this.rdMaphong.CheckedChanged += new System.EventHandler(this.rd_CheckedChanged);
+			this.rdMaphong.Click += new System.EventHandler(this.rdMatb_Click);
 			// 
 			// rdTentb
 			// 
@@ -416,7 +420,7 @@
 			this.rdTentb.TabIndex = 1;
 			this.rdTentb.Text = "Tên thiết bị";
 			this.rdTentb.UseVisualStyleBackColor = true;
-			this.rdTentb.CheckedChanged += new System.EventHandler(this.rd_CheckedChanged);
+			this.rdTentb.Click += new System.EventHandler(this.rdMatb_Click);
 			// 
 			// rdMatb
 			// 
@@ -429,7 +433,7 @@
 			this.rdMatb.TabStop = true;
 			this.rdMatb.Text = "Mã thiết bị";
 			this.rdMatb.UseVisualStyleBackColor = true;
-			this.rdMatb.CheckedChanged += new System.EventHandler(this.rd_CheckedChanged);
+			this.rdMatb.Click += new System.EventHandler(this.rdMatb_Click);
 			// 
 			// ThietBi
 			// 
@@ -469,9 +473,9 @@
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.ErrorProvider errorProvider1;
 		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.Button btnXoa;
 		private System.Windows.Forms.Button btnCapnhat;
-		private System.Windows.Forms.Button button6;
+		private System.Windows.Forms.Button btnThem;
 		private System.Windows.Forms.Panel panel4;
 		private System.Windows.Forms.TextBox txtHangsx;
 		private System.Windows.Forms.Label label14;

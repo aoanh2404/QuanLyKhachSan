@@ -259,9 +259,15 @@ namespace DesignForm.Forms
 
 				SetDataGrid(dtGird);
 
+				if (this.chkSearch.Checked && this.rdTentb.Checked)
+				{
+					this.rdMatb.Checked = true;
+					this.chkSearch.Checked = false;
+				}
+
 				foreach (Control ctrl in this.panel4.Controls)
 				{
-					if ((ctrl is TextBox) && !ctrl.Equals(this.txtTenTb))
+					if ((ctrl is TextBox) && !ctrl.Name.Equals(this.txtTenTb.Name))
 					{
 						(ctrl as TextBox).Text = string.Empty;
 					}
@@ -312,27 +318,83 @@ namespace DesignForm.Forms
 					return;
 				}
 
+				if(!string.IsNullOrEmpty(this.txtMaP.Text.Trim()))
+				{
+					if(!checkMaPhong())
+					{
+						MessageBox.Show("Không có mã phòng hiện tại!");
+						return;
+					}
+				}
+
 				DialogResult dlg = MessageBox.Show("Bạn có chắc muốn sữa không!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
 				if (dlg == DialogResult.Yes)
 				{
 					StringBuilder sbSQL = new StringBuilder();
-					sbSQL.Append("UPDATE THIETBI SET	MATB = @MATB, TENTV = @TENTV, NHASX = @NHASX, GIA = @GIA, NGAYNHAP = @NGAYNHAP, TINHTRANG = @TINHTRANG;");
+					sbSQL.Append("UPDATE THIETBI SET TENTV = @TENTV, NHASX = @NHASX, GIA = @GIA, NGAYNHAP = @NGAYNHAP, TINHTRANG = @TINHTRANG WHERE MATB = @MATB;");
 
 					if (this.txtMaP.Tag.Equals(string.Empty) && !string.IsNullOrEmpty(this.txtMaP.Text))
 					{
 						sbSQL.Append("INSERT INTO QUANLITB VALUES(@MAPHONG, @MATB, @NGAYLAP);");
 					}
 
+					if (!this.txtMaP.Tag.Equals(string.Empty))
+					{
+						if (string.IsNullOrEmpty(this.txtMaP.Text))
+						{
+							sbSQL.Append("DELETE QUANLITB WHERE MATB = @MATB;");
+						}
+						else if (!this.txtMaP.Tag.Equals(this.txtMaP.Text))
+						{
+							sbSQL.Append("UPDATE QUANLITB SET MAPHONG = @MAPHONG WHERE MATB = @MATB");
+						}
+						else
+						{
+							//nothing
+						}
+					}
+
 					SqlConnection conn = Database.GetDBConnection();
 					conn.Open();
 					SqlCommand cmd = new SqlCommand(sbSQL.ToString(), conn);
-					cmd.ExecuteNonQuery();
-					conn.Close();
-					LoadDataGrid();
-					MessageBox.Show("Thực hiện thành công!");
-				}
+					SqlTransaction transaction;
+					transaction = conn.BeginTransaction("SampleTransaction");
+					cmd.Connection = conn;
+					cmd.Transaction = transaction;
+					cmd.Parameters.AddWithValue("@MAPHONG", this.txtMaP.Text.Trim());
+					cmd.Parameters.AddWithValue("@MATB", this.txtMaTb.Text.Trim());
+					cmd.Parameters.AddWithValue("@NGAYLAP", this.dateNgayNhap.Value.ToShortDateString());
+					cmd.Parameters.AddWithValue("@TENTV", this.txtTenTb.Text.Trim());
+					cmd.Parameters.AddWithValue("@NHASX", this.txtHangsx.Text);
+					cmd.Parameters.AddWithValue("@GIA", this.txtGia.Text);
+					cmd.Parameters.AddWithValue("@NGAYNHAP", this.dateNgayLapTB.Value.ToShortDateString());
+					cmd.Parameters.AddWithValue("@TINHTRANG", this.cbHienTrangTb.SelectedIndex);
+					try
+					{
+						cmd.ExecuteNonQuery();
+						transaction.Commit();
+						LoadDataGrid();
+						ClearMH();
+						SaveMH();
+						MessageBox.Show("Thực hiện thành công!");
+					}
+					catch (Exception ex)
+					{
+						Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+						Console.WriteLine("  Message: {0}", ex.Message);
 
+						try
+						{
+							transaction.Rollback();
+						}
+						catch (Exception ex2)
+						{
+							Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+							Console.WriteLine("  Message: {0}", ex2.Message);
+						}
+					}
+				}
 			}
 			catch (Exception)
 			{
@@ -346,11 +408,13 @@ namespace DesignForm.Forms
 			{
 				if (this.chkSearch.Checked)
 				{
+					this.rdMatb.Checked = true;
 					this.panel1.Enabled = true;
 					this.txtTenTb.AutoCompleteMode = AutoCompleteMode.Suggest;
 				}
 				else
 				{
+					this.rdMatb.Checked = true;
 					this.panel1.Enabled = false;
 					this.txtTenTb.AutoCompleteMode = AutoCompleteMode.None;
 				}
@@ -359,21 +423,6 @@ namespace DesignForm.Forms
 			{
 				throw;
 			}
-		}
-
-		private void rd_CheckedChanged(object sender, EventArgs e)
-		{
-			if (this.chkSearch.Checked && this.rdTentb.Checked)
-			{
-				this.txtTenTb.AutoCompleteMode = AutoCompleteMode.Suggest;
-			}
-			else
-			{
-				this.txtTenTb.AutoCompleteMode = AutoCompleteMode.None;
-			}
-
-			ClearMH();
-			SetDataGrid(this.dtdata);
 		}
 
 		private void txtMaP_TextChanged(object sender, EventArgs e)
@@ -482,9 +531,9 @@ namespace DesignForm.Forms
 		{
 			ArrayList ctrlEror = new ArrayList();
 
-			foreach (Control ctrl in this.Controls)
+			foreach (Control ctrl in this.panel4.Controls)
 			{
-				if ((ctrl is TextBox) && !ctrl.Equals(this.txtMaP) && string.IsNullOrEmpty(ctrl.Text.Trim()))
+				if ((ctrl is TextBox) && !ctrl.Name.Equals(this.txtMaP.Name) && string.IsNullOrEmpty(ctrl.Text.Trim()))
 				{
 					ctrlEror.Add(ctrl);
 				}
@@ -512,7 +561,7 @@ namespace DesignForm.Forms
 
 		private void ClearError()
 		{
-			foreach (Control ctrl in this.Controls)
+			foreach (Control ctrl in this.panel4.Controls)
 			{
 				if ((ctrl is TextBox))
 				{
@@ -531,6 +580,220 @@ namespace DesignForm.Forms
 			}
 		}
 
+		private void txtMaP_Validated(object sender, EventArgs e)
+		{
+			if (this.chkSearch.Checked)
+			{
+				this.rdMatb.Checked = true;
+				this.chkSearch.Checked = false;
+			}
+		}
 
+		private void txtMaTb_Validated(object sender, EventArgs e)
+		{
+			if (this.chkSearch.Checked)
+			{
+				this.rdMatb.Checked = true;
+				this.chkSearch.Checked = false;
+			}
+		}
+
+		private void rdMatb_Click(object sender, EventArgs e)
+		{
+			if (this.chkSearch.Checked && this.rdTentb.Checked)
+			{
+				this.txtTenTb.AutoCompleteMode = AutoCompleteMode.Suggest;
+			}
+			else
+			{
+				this.txtTenTb.AutoCompleteMode = AutoCompleteMode.None;
+			}
+			ClearMH();
+			SetDataGrid(this.dtdata);
+		}
+
+		private void btnThem_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				ClearError();
+
+				if (!CheckERorr())
+				{
+					MessageBox.Show("Chưa nhập đủ thông tin!");
+					return;
+				}
+
+				DataTable dtData = (this.dataGridView1.DataSource as DataTable);
+
+				DataRow[] dr = dtData.Select("MATB = '" + this.txtMaTb.Text.ToString().Trim() + "'", string.Empty);
+
+				if (dr.Length > 0)
+				{
+					MessageBox.Show("Mã đã tồn tại!");
+					return;
+				}
+
+				if (!string.IsNullOrEmpty(this.txtMaP.Text.Trim()))
+				{
+					if (!checkMaPhong())
+					{
+						MessageBox.Show("Không có mã phòng hiện tại!");
+						return;
+					}
+				}
+
+				DialogResult dlg = MessageBox.Show("Bạn có chắc muốn thêm không!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+				if (dlg == DialogResult.Yes)
+				{
+					StringBuilder sbSql = new StringBuilder();
+					sbSql.Append("INSERT INTO THIETBI VALUES(@MATB, @TENTV, @NHASX,  @GIA, @NGAYNHAP, @TINHTRANG);");
+
+					if (!string.IsNullOrEmpty(this.txtMaP.Text.Trim()))
+					{
+						sbSql.Append("INSERT INTO QUANLITB VALUES(@MAPHONG, @MATB, @NGAYLAP)");
+					}
+
+					SqlConnection conn = Database.GetDBConnection();
+					conn.Open();
+					SqlCommand cmd = new SqlCommand(sbSql.ToString(), conn);
+					SqlTransaction transaction;
+					transaction = conn.BeginTransaction("SampleTransaction");
+					cmd.Connection = conn;
+					cmd.Transaction = transaction;
+					cmd.Parameters.AddWithValue("@MAPHONG", this.txtMaP.Text.Trim());
+					cmd.Parameters.AddWithValue("@MATB", this.txtMaTb.Text.Trim());
+					cmd.Parameters.AddWithValue("@NGAYLAP", this.dateNgayNhap.Value.ToShortDateString());
+					cmd.Parameters.AddWithValue("@TENTV", this.txtTenTb.Text.Trim());
+					cmd.Parameters.AddWithValue("@NHASX", this.txtHangsx.Text);
+					cmd.Parameters.AddWithValue("@GIA", this.txtGia.Text);
+					cmd.Parameters.AddWithValue("@NGAYNHAP", this.dateNgayLapTB.Value.ToShortDateString());
+					cmd.Parameters.AddWithValue("@TINHTRANG", this.cbHienTrangTb.SelectedIndex);
+					try
+					{
+						cmd.ExecuteNonQuery();
+						transaction.Commit();
+						LoadDataGrid();
+						ClearMH();
+						SaveMH();
+						MessageBox.Show("Thực hiện thành công!");
+					}
+					catch (Exception ex)
+					{
+						Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+						Console.WriteLine("  Message: {0}", ex.Message);
+
+						try
+						{
+							transaction.Rollback();
+						}
+						catch (Exception ex2)
+						{
+							Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+							Console.WriteLine("  Message: {0}", ex2.Message);
+						}
+					}
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		private void btnXoa_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (string.IsNullOrEmpty(this.txtMaTb.Text.Trim()))
+				{
+					MessageBox.Show("Không có dữ liệu để xoá!", "Thông báo");
+					return;
+				}
+
+				DialogResult dlg = new DialogResult();
+
+				if (!IsChangedMH())
+				{
+					dlg = MessageBox.Show("Có dữ liệu thay đổi bạn có chắc muốn xoá không!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+				}
+				else
+				{
+					dlg = MessageBox.Show("Bạn có chắc muốn xoá không!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+				}
+
+				if (dlg == DialogResult.Yes)
+				{
+					StringBuilder sbSql = new StringBuilder();
+					if (!string.IsNullOrEmpty(this.txtMaP.Text.Trim()))
+					{
+						sbSql.Append("DELETE QUANLITB WHERE MATB = @MATB;");
+					}
+
+					sbSql.Append("DELETE THIETBI WHERE MATB = @MATB");
+
+
+					SqlConnection conn = Database.GetDBConnection();
+					conn.Open();
+					SqlCommand cmd = new SqlCommand(sbSql.ToString(), conn);
+					SqlTransaction transaction;
+					transaction = conn.BeginTransaction("SampleTransaction");
+					cmd.Connection = conn;
+					cmd.Transaction = transaction;
+					cmd.Parameters.AddWithValue("@MAPHONG", this.txtMaP.Text.Trim());
+					cmd.Parameters.AddWithValue("@MATB", this.txtMaTb.Text.Trim());
+					try
+					{
+						cmd.ExecuteNonQuery();
+						transaction.Commit();
+						LoadDataGrid();
+						ClearMH();
+						SaveMH();
+						MessageBox.Show("Thực hiện thành công!");
+					}
+					catch (Exception ex)
+					{
+						Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+						Console.WriteLine("  Message: {0}", ex.Message);
+
+						try
+						{
+							transaction.Rollback();
+						}
+						catch (Exception ex2)
+						{
+							Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+							Console.WriteLine("  Message: {0}", ex2.Message);
+						}
+					}
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		private bool checkMaPhong()
+		{
+			DataTable dt = new DataTable();
+			String strSql = "Select COUNT(*) FROM PHONG WHERE MAPHONG = @MAPHONG";
+			SqlConnection conn = Database.GetDBConnection();
+			conn.Open();
+			SqlCommand cmd = new SqlCommand(strSql, conn);
+			cmd.Parameters.AddWithValue("@MAPHONG", this.txtMaP.Text.Trim());
+			dt.Load(cmd.ExecuteReader());
+			conn.Close();
+
+			if (dt != null)
+			{
+				if (Convert.ToInt32(dt.Rows[0][0].ToString()) <=0)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 }
