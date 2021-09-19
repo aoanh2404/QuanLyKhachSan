@@ -117,6 +117,8 @@
 			this.textBox19 = new System.Windows.Forms.TextBox();
 			this.label30 = new System.Windows.Forms.Label();
 			this.dataGridView3 = new System.Windows.Forms.DataGridView();
+			this.btnReset = new System.Windows.Forms.Button();
+			this.btnXoa = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.tabpDatPhong.SuspendLayout();
 			this.panel11.SuspendLayout();
@@ -157,6 +159,8 @@
 			// panel11
 			// 
 			this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.panel11.Controls.Add(this.btnXoa);
+			this.panel11.Controls.Add(this.btnReset);
 			this.panel11.Controls.Add(this.label31);
 			this.panel11.Controls.Add(this.cbLoaiPhong);
 			this.panel11.Controls.Add(this.dateGioDat);
@@ -220,7 +224,7 @@
 			this.dateNgayDiDat.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
 			this.dateNgayDiDat.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			this.dateNgayDiDat.Name = "dateNgayDiDat";
-			this.dateNgayDiDat.Size = new System.Drawing.Size(151, 24);
+			this.dateNgayDiDat.Size = new System.Drawing.Size(149, 24);
 			this.dateNgayDiDat.TabIndex = 23;
 			// 
 			// label2
@@ -290,13 +294,13 @@
 			// 
 			// dateNgaydenDat
 			// 
-			this.dateNgaydenDat.CustomFormat = "yyyy/MM/dd HH:mm";
+			this.dateNgaydenDat.CustomFormat = "yyyy/MM/dd";
 			this.dateNgaydenDat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dateNgaydenDat.Location = new System.Drawing.Point(93, 58);
 			this.dateNgaydenDat.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
 			this.dateNgaydenDat.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			this.dateNgaydenDat.Name = "dateNgaydenDat";
-			this.dateNgaydenDat.Size = new System.Drawing.Size(151, 24);
+			this.dateNgaydenDat.Size = new System.Drawing.Size(111, 24);
 			this.dateNgaydenDat.TabIndex = 21;
 			// 
 			// dataGridView1
@@ -1088,7 +1092,7 @@
 			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView3.ColumnHeadersVisible = false;
+			this.dataGridView3.EnableHeadersVisualStyles = false;
 			this.dataGridView3.Location = new System.Drawing.Point(3, 239);
 			this.dataGridView3.Name = "dataGridView3";
 			this.dataGridView3.ReadOnly = true;
@@ -1102,9 +1106,36 @@
 			this.dataGridView3.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridView3.RowHeadersVisible = false;
 			this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView3.Size = new System.Drawing.Size(834, 107);
-			this.dataGridView3.TabIndex = 2;
+			this.dataGridView3.Size = new System.Drawing.Size(834, 104);
+			this.dataGridView3.TabIndex = 8;
 			this.dataGridView3.TabStop = false;
+			this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
+			this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_Key);
+			this.dataGridView3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_Key);
+			// 
+			// btnReset
+			// 
+			this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnReset.Location = new System.Drawing.Point(552, 196);
+			this.btnReset.Name = "btnReset";
+			this.btnReset.Size = new System.Drawing.Size(88, 28);
+			this.btnReset.TabIndex = 32;
+			this.btnReset.Text = "ReSet";
+			this.btnReset.UseVisualStyleBackColor = true;
+			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+			// 
+			// btnXoa
+			// 
+			this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnXoa.Location = new System.Drawing.Point(646, 196);
+			this.btnXoa.Name = "btnXoa";
+			this.btnXoa.Size = new System.Drawing.Size(88, 28);
+			this.btnXoa.TabIndex = 33;
+			this.btnXoa.Text = "Huỷ đặt";
+			this.btnXoa.UseVisualStyleBackColor = true;
+			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
 			// 
 			// PhongKS
 			// 
@@ -1232,5 +1263,7 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.DataGridView dataGridView3;
+		private System.Windows.Forms.Button btnReset;
+		private System.Windows.Forms.Button btnXoa;
 	}
 }
