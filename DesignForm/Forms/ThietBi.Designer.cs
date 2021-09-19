@@ -204,6 +204,7 @@
 			this.cbHienTrangTb.Name = "cbHienTrangTb";
 			this.cbHienTrangTb.Size = new System.Drawing.Size(121, 26);
 			this.cbHienTrangTb.TabIndex = 11;
+			this.cbHienTrangTb.Validated += new System.EventHandler(this.ClearError_Control);
 			// 
 			// dateNgayLapTB
 			// 
@@ -216,6 +217,7 @@
 			this.dateNgayLapTB.Name = "dateNgayLapTB";
 			this.dateNgayLapTB.Size = new System.Drawing.Size(111, 24);
 			this.dateNgayLapTB.TabIndex = 15;
+			this.dateNgayLapTB.Validated += new System.EventHandler(this.ClearError_Control);
 			// 
 			// txtMaP
 			// 
@@ -261,6 +263,7 @@
 			this.dateNgayNhap.Name = "dateNgayNhap";
 			this.dateNgayNhap.Size = new System.Drawing.Size(111, 24);
 			this.dateNgayNhap.TabIndex = 5;
+			this.dateNgayNhap.Validated += new System.EventHandler(this.ClearError_Control);
 			// 
 			// label6
 			// 
@@ -279,6 +282,7 @@
 			this.txtGia.Name = "txtGia";
 			this.txtGia.Size = new System.Drawing.Size(189, 24);
 			this.txtGia.TabIndex = 9;
+			this.txtGia.Validated += new System.EventHandler(this.ClearError_Control);
 			// 
 			// label3
 			// 
@@ -309,6 +313,7 @@
 			this.txtHangsx.Name = "txtHangsx";
 			this.txtHangsx.Size = new System.Drawing.Size(189, 24);
 			this.txtHangsx.TabIndex = 7;
+			this.txtHangsx.Validated += new System.EventHandler(this.ClearError_Control);
 			// 
 			// label14
 			// 
@@ -352,6 +357,7 @@
 			this.txtTenTb.Size = new System.Drawing.Size(189, 24);
 			this.txtTenTb.TabIndex = 3;
 			this.txtTenTb.Validating += new System.ComponentModel.CancelEventHandler(this.txtTenTb_Validating);
+			this.txtTenTb.Validated += new System.EventHandler(this.ClearError_Control);
 			// 
 			// label16
 			// 

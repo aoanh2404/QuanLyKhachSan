@@ -582,6 +582,7 @@ namespace DesignForm.Forms
 
 		private void txtMaP_Validated(object sender, EventArgs e)
 		{
+			this.errorProvider1.SetError(this.txtMaP, string.Empty);
 			if (this.chkSearch.Checked)
 			{
 				this.rdMatb.Checked = true;
@@ -591,6 +592,7 @@ namespace DesignForm.Forms
 
 		private void txtMaTb_Validated(object sender, EventArgs e)
 		{
+			this.errorProvider1.SetError(this.txtMaTb, string.Empty);
 			if (this.chkSearch.Checked)
 			{
 				this.rdMatb.Checked = true;
@@ -794,6 +796,18 @@ namespace DesignForm.Forms
 				}
 			}
 			return true;
+		}
+
+		private void ClearError_Control(object sender, EventArgs e)
+		{
+			try
+			{
+				this.errorProvider1.SetError((sender as Control), string.Empty);
+			}
+			catch (Exception)
+			{
+				throw;
+			}
 		}
 	}
 }

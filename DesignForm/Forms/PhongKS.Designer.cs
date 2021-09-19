@@ -29,12 +29,31 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhongKS));
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
 			this.tabpDatPhong = new System.Windows.Forms.TabPage();
+			this.panel11 = new System.Windows.Forms.Panel();
+			this.label31 = new System.Windows.Forms.Label();
+			this.cbLoaiPhong = new System.Windows.Forms.ComboBox();
+			this.dateGioDat = new System.Windows.Forms.DateTimePicker();
+			this.dateNgayDiDat = new System.Windows.Forms.DateTimePicker();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.txtSdtDat = new System.Windows.Forms.TextBox();
+			this.txtHoTenDat = new System.Windows.Forms.TextBox();
+			this.txtMaPhongD = new System.Windows.Forms.TextBox();
+			this.dateNgaydenDat = new System.Windows.Forms.DateTimePicker();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.btnDatPhong = new System.Windows.Forms.Button();
+			this.label6 = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
 			this.tabPhong = new System.Windows.Forms.TabControl();
 			this.tabpNhanPhong = new System.Windows.Forms.TabPage();
 			this.panel5 = new System.Windows.Forms.Panel();
@@ -97,25 +116,11 @@
 			this.panel9 = new System.Windows.Forms.Panel();
 			this.textBox19 = new System.Windows.Forms.TextBox();
 			this.label30 = new System.Windows.Forms.Label();
-			this.panel11 = new System.Windows.Forms.Panel();
-			this.label31 = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.textBox5 = new System.Windows.Forms.TextBox();
-			this.textBox6 = new System.Windows.Forms.TextBox();
-			this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.button1 = new System.Windows.Forms.Button();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
+			this.dataGridView3 = new System.Windows.Forms.DataGridView();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.tabpDatPhong.SuspendLayout();
+			this.panel11.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tabPhong.SuspendLayout();
 			this.tabpNhanPhong.SuspendLayout();
 			this.panel5.SuspendLayout();
@@ -130,8 +135,7 @@
 			this.panel7.SuspendLayout();
 			this.panel8.SuspendLayout();
 			this.panel9.SuspendLayout();
-			this.panel11.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// errorProvider1
@@ -140,6 +144,7 @@
 			// 
 			// tabpDatPhong
 			// 
+			this.tabpDatPhong.Controls.Add(this.dataGridView3);
 			this.tabpDatPhong.Controls.Add(this.panel11);
 			this.tabpDatPhong.Location = new System.Drawing.Point(4, 27);
 			this.tabpDatPhong.Name = "tabpDatPhong";
@@ -148,6 +153,215 @@
 			this.tabpDatPhong.TabIndex = 0;
 			this.tabpDatPhong.Text = "Đặt Phòng";
 			this.tabpDatPhong.UseVisualStyleBackColor = true;
+			// 
+			// panel11
+			// 
+			this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.panel11.Controls.Add(this.label31);
+			this.panel11.Controls.Add(this.cbLoaiPhong);
+			this.panel11.Controls.Add(this.dateGioDat);
+			this.panel11.Controls.Add(this.dateNgayDiDat);
+			this.panel11.Controls.Add(this.label2);
+			this.panel11.Controls.Add(this.label3);
+			this.panel11.Controls.Add(this.label4);
+			this.panel11.Controls.Add(this.label5);
+			this.panel11.Controls.Add(this.txtSdtDat);
+			this.panel11.Controls.Add(this.txtHoTenDat);
+			this.panel11.Controls.Add(this.txtMaPhongD);
+			this.panel11.Controls.Add(this.dateNgaydenDat);
+			this.panel11.Controls.Add(this.dataGridView1);
+			this.panel11.Controls.Add(this.btnDatPhong);
+			this.panel11.Controls.Add(this.label6);
+			this.panel11.Controls.Add(this.label7);
+			this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel11.Location = new System.Drawing.Point(3, 3);
+			this.panel11.Name = "panel11";
+			this.panel11.Size = new System.Drawing.Size(834, 230);
+			this.panel11.TabIndex = 0;
+			// 
+			// label31
+			// 
+			this.label31.BackColor = System.Drawing.Color.Black;
+			this.label31.ForeColor = System.Drawing.Color.White;
+			this.label31.Location = new System.Drawing.Point(5, 137);
+			this.label31.Name = "label31";
+			this.label31.Size = new System.Drawing.Size(88, 26);
+			this.label31.TabIndex = 26;
+			this.label31.Text = "Loại phòng";
+			this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// cbLoaiPhong
+			// 
+			this.cbLoaiPhong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbLoaiPhong.FormattingEnabled = true;
+			this.cbLoaiPhong.Location = new System.Drawing.Point(93, 137);
+			this.cbLoaiPhong.Name = "cbLoaiPhong";
+			this.cbLoaiPhong.Size = new System.Drawing.Size(121, 26);
+			this.cbLoaiPhong.TabIndex = 27;
+			this.cbLoaiPhong.SelectedIndexChanged += new System.EventHandler(this.cbLoaiPhong_SelectedIndexChanged);
+			// 
+			// dateGioDat
+			// 
+			this.dateGioDat.CustomFormat = "HH:mm";
+			this.dateGioDat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateGioDat.Location = new System.Drawing.Point(93, 110);
+			this.dateGioDat.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
+			this.dateGioDat.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+			this.dateGioDat.Name = "dateGioDat";
+			this.dateGioDat.ShowUpDown = true;
+			this.dateGioDat.Size = new System.Drawing.Size(62, 24);
+			this.dateGioDat.TabIndex = 25;
+			// 
+			// dateNgayDiDat
+			// 
+			this.dateNgayDiDat.CustomFormat = "yyyy/MM/dd HH:mm";
+			this.dateNgayDiDat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateNgayDiDat.Location = new System.Drawing.Point(93, 84);
+			this.dateNgayDiDat.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
+			this.dateNgayDiDat.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+			this.dateNgayDiDat.Name = "dateNgayDiDat";
+			this.dateNgayDiDat.Size = new System.Drawing.Size(151, 24);
+			this.dateNgayDiDat.TabIndex = 23;
+			// 
+			// label2
+			// 
+			this.label2.BackColor = System.Drawing.Color.Black;
+			this.label2.ForeColor = System.Drawing.Color.White;
+			this.label2.Location = new System.Drawing.Point(5, 110);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(88, 24);
+			this.label2.TabIndex = 24;
+			this.label2.Text = "Giờ đến";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label3
+			// 
+			this.label3.BackColor = System.Drawing.Color.Black;
+			this.label3.ForeColor = System.Drawing.Color.White;
+			this.label3.Location = new System.Drawing.Point(5, 84);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(88, 24);
+			this.label3.TabIndex = 22;
+			this.label3.Text = "Ngày đi";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label4
+			// 
+			this.label4.BackColor = System.Drawing.Color.Black;
+			this.label4.ForeColor = System.Drawing.Color.White;
+			this.label4.Location = new System.Drawing.Point(5, 32);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(88, 24);
+			this.label4.TabIndex = 18;
+			this.label4.Text = "Họ tên";
+			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label5
+			// 
+			this.label5.BackColor = System.Drawing.Color.Black;
+			this.label5.ForeColor = System.Drawing.Color.White;
+			this.label5.Location = new System.Drawing.Point(5, 6);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(88, 24);
+			this.label5.TabIndex = 16;
+			this.label5.Text = "SĐT";
+			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// txtSdtDat
+			// 
+			this.txtSdtDat.Location = new System.Drawing.Point(93, 6);
+			this.txtSdtDat.Name = "txtSdtDat";
+			this.txtSdtDat.Size = new System.Drawing.Size(258, 24);
+			this.txtSdtDat.TabIndex = 17;
+			// 
+			// txtHoTenDat
+			// 
+			this.txtHoTenDat.Location = new System.Drawing.Point(93, 32);
+			this.txtHoTenDat.Name = "txtHoTenDat";
+			this.txtHoTenDat.Size = new System.Drawing.Size(258, 24);
+			this.txtHoTenDat.TabIndex = 19;
+			// 
+			// txtMaPhongD
+			// 
+			this.txtMaPhongD.Location = new System.Drawing.Point(93, 166);
+			this.txtMaPhongD.Name = "txtMaPhongD";
+			this.txtMaPhongD.Size = new System.Drawing.Size(111, 24);
+			this.txtMaPhongD.TabIndex = 29;
+			// 
+			// dateNgaydenDat
+			// 
+			this.dateNgaydenDat.CustomFormat = "yyyy/MM/dd HH:mm";
+			this.dateNgaydenDat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateNgaydenDat.Location = new System.Drawing.Point(93, 58);
+			this.dateNgaydenDat.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
+			this.dateNgaydenDat.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+			this.dateNgaydenDat.Name = "dateNgaydenDat";
+			this.dateNgaydenDat.Size = new System.Drawing.Size(151, 24);
+			this.dateNgaydenDat.TabIndex = 21;
+			// 
+			// dataGridView1
+			// 
+			this.dataGridView1.AllowUserToAddRows = false;
+			this.dataGridView1.AllowUserToDeleteRows = false;
+			this.dataGridView1.AllowUserToResizeRows = false;
+			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Brown;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gainsboro;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.EnableHeadersVisualStyles = false;
+			this.dataGridView1.Location = new System.Drawing.Point(357, 6);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.ReadOnly = true;
+			this.dataGridView1.RowHeadersVisible = false;
+			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridView1.Size = new System.Drawing.Size(473, 180);
+			this.dataGridView1.TabIndex = 30;
+			this.dataGridView1.TabStop = false;
+			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+			this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_Key);
+			this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_Key);
+			// 
+			// btnDatPhong
+			// 
+			this.btnDatPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnDatPhong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnDatPhong.Location = new System.Drawing.Point(740, 196);
+			this.btnDatPhong.Name = "btnDatPhong";
+			this.btnDatPhong.Size = new System.Drawing.Size(88, 28);
+			this.btnDatPhong.TabIndex = 31;
+			this.btnDatPhong.Text = "Đặt phòng";
+			this.btnDatPhong.UseVisualStyleBackColor = true;
+			this.btnDatPhong.Click += new System.EventHandler(this.btnDatPhong_Click);
+			// 
+			// label6
+			// 
+			this.label6.BackColor = System.Drawing.Color.Black;
+			this.label6.ForeColor = System.Drawing.Color.White;
+			this.label6.Location = new System.Drawing.Point(5, 166);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(88, 24);
+			this.label6.TabIndex = 28;
+			this.label6.Text = "Mã Phòng";
+			this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label7
+			// 
+			this.label7.BackColor = System.Drawing.Color.Black;
+			this.label7.ForeColor = System.Drawing.Color.White;
+			this.label7.Location = new System.Drawing.Point(5, 58);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(88, 24);
+			this.label7.TabIndex = 20;
+			this.label7.Text = "Ngày đến";
+			this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tabPhong
 			// 
@@ -228,27 +442,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle10.BackColor = System.Drawing.Color.Brown;
-			dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-			dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Gainsboro;
-			dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle4.BackColor = System.Drawing.Color.Brown;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gainsboro;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView2.ColumnHeadersVisible = false;
 			this.dataGridView2.Location = new System.Drawing.Point(3, 257);
 			this.dataGridView2.Name = "dataGridView2";
 			this.dataGridView2.ReadOnly = true;
-			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.HotTrack;
-			dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-			dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.HotTrack;
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			this.dataGridView2.RowHeadersVisible = false;
 			this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridView2.Size = new System.Drawing.Size(834, 86);
@@ -856,208 +1070,41 @@
 			this.label30.Text = "Mã Phòng";
 			this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// panel11
+			// dataGridView3
 			// 
-			this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.panel11.Controls.Add(this.label31);
-			this.panel11.Controls.Add(this.comboBox1);
-			this.panel11.Controls.Add(this.dateTimePicker4);
-			this.panel11.Controls.Add(this.dateTimePicker5);
-			this.panel11.Controls.Add(this.label2);
-			this.panel11.Controls.Add(this.label3);
-			this.panel11.Controls.Add(this.label4);
-			this.panel11.Controls.Add(this.label5);
-			this.panel11.Controls.Add(this.textBox3);
-			this.panel11.Controls.Add(this.textBox5);
-			this.panel11.Controls.Add(this.textBox6);
-			this.panel11.Controls.Add(this.dateTimePicker6);
-			this.panel11.Controls.Add(this.dataGridView1);
-			this.panel11.Controls.Add(this.button1);
-			this.panel11.Controls.Add(this.label6);
-			this.panel11.Controls.Add(this.label7);
-			this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel11.Location = new System.Drawing.Point(3, 3);
-			this.panel11.Name = "panel11";
-			this.panel11.Size = new System.Drawing.Size(834, 235);
-			this.panel11.TabIndex = 0;
-			// 
-			// label31
-			// 
-			this.label31.BackColor = System.Drawing.Color.Black;
-			this.label31.ForeColor = System.Drawing.Color.White;
-			this.label31.Location = new System.Drawing.Point(5, 137);
-			this.label31.Name = "label31";
-			this.label31.Size = new System.Drawing.Size(88, 26);
-			this.label31.TabIndex = 26;
-			this.label31.Text = "Loại phòng";
-			this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// comboBox1
-			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(93, 137);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(121, 26);
-			this.comboBox1.TabIndex = 27;
-			// 
-			// dateTimePicker4
-			// 
-			this.dateTimePicker4.CustomFormat = "HH:mm";
-			this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker4.Location = new System.Drawing.Point(93, 110);
-			this.dateTimePicker4.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
-			this.dateTimePicker4.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-			this.dateTimePicker4.Name = "dateTimePicker4";
-			this.dateTimePicker4.ShowUpDown = true;
-			this.dateTimePicker4.Size = new System.Drawing.Size(62, 24);
-			this.dateTimePicker4.TabIndex = 25;
-			// 
-			// dateTimePicker5
-			// 
-			this.dateTimePicker5.CustomFormat = "yyyy/MM/dd HH:mm";
-			this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker5.Location = new System.Drawing.Point(93, 84);
-			this.dateTimePicker5.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
-			this.dateTimePicker5.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-			this.dateTimePicker5.Name = "dateTimePicker5";
-			this.dateTimePicker5.Size = new System.Drawing.Size(151, 24);
-			this.dateTimePicker5.TabIndex = 23;
-			// 
-			// label2
-			// 
-			this.label2.BackColor = System.Drawing.Color.Black;
-			this.label2.ForeColor = System.Drawing.Color.White;
-			this.label2.Location = new System.Drawing.Point(5, 110);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(88, 24);
-			this.label2.TabIndex = 24;
-			this.label2.Text = "Giờ đến";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// label3
-			// 
-			this.label3.BackColor = System.Drawing.Color.Black;
-			this.label3.ForeColor = System.Drawing.Color.White;
-			this.label3.Location = new System.Drawing.Point(5, 84);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(88, 24);
-			this.label3.TabIndex = 22;
-			this.label3.Text = "Ngày đi";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// label4
-			// 
-			this.label4.BackColor = System.Drawing.Color.Black;
-			this.label4.ForeColor = System.Drawing.Color.White;
-			this.label4.Location = new System.Drawing.Point(5, 32);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(88, 24);
-			this.label4.TabIndex = 18;
-			this.label4.Text = "Họ tên";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// label5
-			// 
-			this.label5.BackColor = System.Drawing.Color.Black;
-			this.label5.ForeColor = System.Drawing.Color.White;
-			this.label5.Location = new System.Drawing.Point(5, 6);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(88, 24);
-			this.label5.TabIndex = 16;
-			this.label5.Text = "SĐT";
-			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// textBox3
-			// 
-			this.textBox3.Location = new System.Drawing.Point(93, 6);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(258, 24);
-			this.textBox3.TabIndex = 17;
-			// 
-			// textBox5
-			// 
-			this.textBox5.Location = new System.Drawing.Point(93, 32);
-			this.textBox5.Name = "textBox5";
-			this.textBox5.Size = new System.Drawing.Size(258, 24);
-			this.textBox5.TabIndex = 19;
-			// 
-			// textBox6
-			// 
-			this.textBox6.Location = new System.Drawing.Point(93, 166);
-			this.textBox6.Name = "textBox6";
-			this.textBox6.Size = new System.Drawing.Size(111, 24);
-			this.textBox6.TabIndex = 29;
-			// 
-			// dateTimePicker6
-			// 
-			this.dateTimePicker6.CustomFormat = "yyyy/MM/dd HH:mm";
-			this.dateTimePicker6.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker6.Location = new System.Drawing.Point(93, 58);
-			this.dateTimePicker6.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
-			this.dateTimePicker6.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-			this.dateTimePicker6.Name = "dateTimePicker6";
-			this.dateTimePicker6.Size = new System.Drawing.Size(151, 24);
-			this.dateTimePicker6.TabIndex = 21;
-			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.AllowUserToResizeRows = false;
-			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.dataGridView3.AllowUserToAddRows = false;
+			this.dataGridView3.AllowUserToDeleteRows = false;
+			this.dataGridView3.AllowUserToResizeRows = false;
+			this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle12.BackColor = System.Drawing.Color.Brown;
-			dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-			dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Gainsboro;
-			dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.EnableHeadersVisualStyles = false;
-			this.dataGridView1.Location = new System.Drawing.Point(357, 6);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.RowHeadersVisible = false;
-			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView1.Size = new System.Drawing.Size(473, 184);
-			this.dataGridView1.TabIndex = 30;
-			this.dataGridView1.TabStop = false;
-			// 
-			// button1
-			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button1.Location = new System.Drawing.Point(740, 196);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(88, 28);
-			this.button1.TabIndex = 31;
-			this.button1.Text = "Đặt phòng";
-			this.button1.UseVisualStyleBackColor = true;
-			// 
-			// label6
-			// 
-			this.label6.BackColor = System.Drawing.Color.Black;
-			this.label6.ForeColor = System.Drawing.Color.White;
-			this.label6.Location = new System.Drawing.Point(5, 166);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(88, 24);
-			this.label6.TabIndex = 28;
-			this.label6.Text = "Mã Phòng";
-			this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// label7
-			// 
-			this.label7.BackColor = System.Drawing.Color.Black;
-			this.label7.ForeColor = System.Drawing.Color.White;
-			this.label7.Location = new System.Drawing.Point(5, 58);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(88, 24);
-			this.label7.TabIndex = 20;
-			this.label7.Text = "Ngày đến";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Brown;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gainsboro;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView3.ColumnHeadersVisible = false;
+			this.dataGridView3.Location = new System.Drawing.Point(3, 239);
+			this.dataGridView3.Name = "dataGridView3";
+			this.dataGridView3.ReadOnly = true;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView3.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			this.dataGridView3.RowHeadersVisible = false;
+			this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridView3.Size = new System.Drawing.Size(834, 107);
+			this.dataGridView3.TabIndex = 2;
+			this.dataGridView3.TabStop = false;
 			// 
 			// PhongKS
 			// 
@@ -1075,6 +1122,9 @@
 			this.Load += new System.EventHandler(this.PhongKS_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.tabpDatPhong.ResumeLayout(false);
+			this.panel11.ResumeLayout(false);
+			this.panel11.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.tabPhong.ResumeLayout(false);
 			this.tabpNhanPhong.ResumeLayout(false);
 			this.panel5.ResumeLayout(false);
@@ -1093,9 +1143,7 @@
 			this.panel8.ResumeLayout(false);
 			this.panel9.ResumeLayout(false);
 			this.panel9.PerformLayout();
-			this.panel11.ResumeLayout(false);
-			this.panel11.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1168,20 +1216,21 @@
 		private System.Windows.Forms.ComboBox comboBox3;
 		private System.Windows.Forms.Panel panel11;
 		private System.Windows.Forms.Label label31;
-		private System.Windows.Forms.ComboBox comboBox1;
-		private System.Windows.Forms.DateTimePicker dateTimePicker4;
-		private System.Windows.Forms.DateTimePicker dateTimePicker5;
+		private System.Windows.Forms.ComboBox cbLoaiPhong;
+		private System.Windows.Forms.DateTimePicker dateGioDat;
+		private System.Windows.Forms.DateTimePicker dateNgayDiDat;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox textBox3;
-		private System.Windows.Forms.TextBox textBox5;
-		private System.Windows.Forms.TextBox textBox6;
-		private System.Windows.Forms.DateTimePicker dateTimePicker6;
+		private System.Windows.Forms.TextBox txtSdtDat;
+		private System.Windows.Forms.TextBox txtHoTenDat;
+		private System.Windows.Forms.TextBox txtMaPhongD;
+		private System.Windows.Forms.DateTimePicker dateNgaydenDat;
 		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnDatPhong;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.DataGridView dataGridView3;
 	}
 }
