@@ -29,15 +29,18 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhongKS));
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
 			this.tabpDatPhong = new System.Windows.Forms.TabPage();
+			this.dataGridView3 = new System.Windows.Forms.DataGridView();
 			this.panel11 = new System.Windows.Forms.Panel();
+			this.btnXoa = new System.Windows.Forms.Button();
+			this.btnReset = new System.Windows.Forms.Button();
 			this.label31 = new System.Windows.Forms.Label();
 			this.cbLoaiPhong = new System.Windows.Forms.ComboBox();
 			this.dateGioDat = new System.Windows.Forms.DateTimePicker();
@@ -116,11 +119,10 @@
 			this.panel9 = new System.Windows.Forms.Panel();
 			this.textBox19 = new System.Windows.Forms.TextBox();
 			this.label30 = new System.Windows.Forms.Label();
-			this.dataGridView3 = new System.Windows.Forms.DataGridView();
-			this.btnReset = new System.Windows.Forms.Button();
-			this.btnXoa = new System.Windows.Forms.Button();
+			this.btnSuaD = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.tabpDatPhong.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.panel11.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tabPhong.SuspendLayout();
@@ -137,7 +139,6 @@
 			this.panel7.SuspendLayout();
 			this.panel8.SuspendLayout();
 			this.panel9.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// errorProvider1
@@ -156,9 +157,49 @@
 			this.tabpDatPhong.Text = "Đặt Phòng";
 			this.tabpDatPhong.UseVisualStyleBackColor = true;
 			// 
+			// dataGridView3
+			// 
+			this.dataGridView3.AllowUserToAddRows = false;
+			this.dataGridView3.AllowUserToDeleteRows = false;
+			this.dataGridView3.AllowUserToResizeRows = false;
+			this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Brown;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gainsboro;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView3.EnableHeadersVisualStyles = false;
+			this.dataGridView3.Location = new System.Drawing.Point(3, 239);
+			this.dataGridView3.Name = "dataGridView3";
+			this.dataGridView3.ReadOnly = true;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView3.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			this.dataGridView3.RowHeadersVisible = false;
+			this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridView3.Size = new System.Drawing.Size(834, 104);
+			this.dataGridView3.TabIndex = 8;
+			this.dataGridView3.TabStop = false;
+			this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
+			this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_Key);
+			this.dataGridView3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_Key);
+			// 
 			// panel11
 			// 
 			this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.panel11.Controls.Add(this.btnSuaD);
 			this.panel11.Controls.Add(this.btnXoa);
 			this.panel11.Controls.Add(this.btnReset);
 			this.panel11.Controls.Add(this.label31);
@@ -182,6 +223,30 @@
 			this.panel11.Name = "panel11";
 			this.panel11.Size = new System.Drawing.Size(834, 230);
 			this.panel11.TabIndex = 0;
+			// 
+			// btnXoa
+			// 
+			this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnXoa.Location = new System.Drawing.Point(646, 196);
+			this.btnXoa.Name = "btnXoa";
+			this.btnXoa.Size = new System.Drawing.Size(88, 28);
+			this.btnXoa.TabIndex = 33;
+			this.btnXoa.Text = "Huỷ đặt";
+			this.btnXoa.UseVisualStyleBackColor = true;
+			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+			// 
+			// btnReset
+			// 
+			this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnReset.Location = new System.Drawing.Point(458, 196);
+			this.btnReset.Name = "btnReset";
+			this.btnReset.Size = new System.Drawing.Size(88, 28);
+			this.btnReset.TabIndex = 32;
+			this.btnReset.Text = "ReSet";
+			this.btnReset.UseVisualStyleBackColor = true;
+			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
 			// 
 			// label31
 			// 
@@ -275,14 +340,14 @@
 			// 
 			this.txtSdtDat.Location = new System.Drawing.Point(93, 6);
 			this.txtSdtDat.Name = "txtSdtDat";
-			this.txtSdtDat.Size = new System.Drawing.Size(258, 24);
+			this.txtSdtDat.Size = new System.Drawing.Size(219, 24);
 			this.txtSdtDat.TabIndex = 17;
 			// 
 			// txtHoTenDat
 			// 
 			this.txtHoTenDat.Location = new System.Drawing.Point(93, 32);
 			this.txtHoTenDat.Name = "txtHoTenDat";
-			this.txtHoTenDat.Size = new System.Drawing.Size(258, 24);
+			this.txtHoTenDat.Size = new System.Drawing.Size(219, 24);
 			this.txtHoTenDat.TabIndex = 19;
 			// 
 			// txtMaPhongD
@@ -1074,68 +1139,17 @@
 			this.label30.Text = "Mã Phòng";
 			this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// dataGridView3
+			// btnSuaD
 			// 
-			this.dataGridView3.AllowUserToAddRows = false;
-			this.dataGridView3.AllowUserToDeleteRows = false;
-			this.dataGridView3.AllowUserToResizeRows = false;
-			this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Brown;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gainsboro;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView3.EnableHeadersVisualStyles = false;
-			this.dataGridView3.Location = new System.Drawing.Point(3, 239);
-			this.dataGridView3.Name = "dataGridView3";
-			this.dataGridView3.ReadOnly = true;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView3.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this.dataGridView3.RowHeadersVisible = false;
-			this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView3.Size = new System.Drawing.Size(834, 104);
-			this.dataGridView3.TabIndex = 8;
-			this.dataGridView3.TabStop = false;
-			this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
-			this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_Key);
-			this.dataGridView3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_Key);
-			// 
-			// btnReset
-			// 
-			this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnReset.Location = new System.Drawing.Point(552, 196);
-			this.btnReset.Name = "btnReset";
-			this.btnReset.Size = new System.Drawing.Size(88, 28);
-			this.btnReset.TabIndex = 32;
-			this.btnReset.Text = "ReSet";
-			this.btnReset.UseVisualStyleBackColor = true;
-			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-			// 
-			// btnXoa
-			// 
-			this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnXoa.Location = new System.Drawing.Point(646, 196);
-			this.btnXoa.Name = "btnXoa";
-			this.btnXoa.Size = new System.Drawing.Size(88, 28);
-			this.btnXoa.TabIndex = 33;
-			this.btnXoa.Text = "Huỷ đặt";
-			this.btnXoa.UseVisualStyleBackColor = true;
-			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+			this.btnSuaD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnSuaD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSuaD.Location = new System.Drawing.Point(552, 196);
+			this.btnSuaD.Name = "btnSuaD";
+			this.btnSuaD.Size = new System.Drawing.Size(88, 28);
+			this.btnSuaD.TabIndex = 34;
+			this.btnSuaD.Text = "Sửa";
+			this.btnSuaD.UseVisualStyleBackColor = true;
+			this.btnSuaD.Click += new System.EventHandler(this.btnSuaD_Click);
 			// 
 			// PhongKS
 			// 
@@ -1153,6 +1167,7 @@
 			this.Load += new System.EventHandler(this.PhongKS_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.tabpDatPhong.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
 			this.panel11.ResumeLayout(false);
 			this.panel11.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -1174,7 +1189,6 @@
 			this.panel8.ResumeLayout(false);
 			this.panel9.ResumeLayout(false);
 			this.panel9.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1265,5 +1279,6 @@
 		private System.Windows.Forms.DataGridView dataGridView3;
 		private System.Windows.Forms.Button btnReset;
 		private System.Windows.Forms.Button btnXoa;
+		private System.Windows.Forms.Button btnSuaD;
 	}
 }

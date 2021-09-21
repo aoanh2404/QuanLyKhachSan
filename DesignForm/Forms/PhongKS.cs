@@ -33,7 +33,7 @@ namespace DesignForm.Forms
 
 		private void LoadThem()
 		{
-			foreach (Control btn in this.tabpDatPhong.Controls)
+			foreach (Control btn in this.panel11.Controls)
 			{
 				if (btn.GetType() == typeof(Button))
 				{
@@ -139,6 +139,7 @@ namespace DesignForm.Forms
 		{
 			try
 			{
+				ClearError();
 				this.txtMaPhongD.Text = this.dataGridView1.CurrentRow.Cells["MAPHONG"].Value.ToString();
 			}
 			catch (Exception)
@@ -151,6 +152,7 @@ namespace DesignForm.Forms
 		{
 			try
 			{
+				ClearError();
 				this.txtMaPhongD.Text = this.dataGridView1.CurrentRow.Cells["MAPHONG"].Value.ToString();
 			}
 			catch (Exception)
@@ -239,6 +241,7 @@ namespace DesignForm.Forms
 		{
 			try
 			{
+				ClearError();
 				if (this.dataGridView3.RowCount == 0)
 				{
 					return;
@@ -264,6 +267,7 @@ namespace DesignForm.Forms
 		{
 			try
 			{
+				ClearError();
 				if (this.dataGridView3.RowCount == 0)
 				{
 					return;
@@ -309,6 +313,7 @@ namespace DesignForm.Forms
 		{
 			try
 			{
+				ClearError();
 				ClearMH();
 			}
 			catch (Exception)
@@ -405,7 +410,7 @@ namespace DesignForm.Forms
 
 		private void ClearError()
 		{
-			foreach (Control ctrl in this.panel4.Controls)
+			foreach (Control ctrl in this.panel11.Controls)
 			{
 				if ((ctrl is TextBox))
 				{
@@ -478,6 +483,18 @@ namespace DesignForm.Forms
 						}
 					}
 				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		private void btnSuaD_Click(object sender, EventArgs e)
+		{
+			try
+			{
+
 			}
 			catch (Exception)
 			{
