@@ -39,6 +39,7 @@
 			this.tabpDatPhong = new System.Windows.Forms.TabPage();
 			this.dataGridView3 = new System.Windows.Forms.DataGridView();
 			this.panel11 = new System.Windows.Forms.Panel();
+			this.btnSuaD = new System.Windows.Forms.Button();
 			this.btnXoa = new System.Windows.Forms.Button();
 			this.btnReset = new System.Windows.Forms.Button();
 			this.label31 = new System.Windows.Forms.Label();
@@ -119,7 +120,6 @@
 			this.panel9 = new System.Windows.Forms.Panel();
 			this.textBox19 = new System.Windows.Forms.TextBox();
 			this.label30 = new System.Windows.Forms.Label();
-			this.btnSuaD = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.tabpDatPhong.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -177,6 +177,7 @@
 			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView3.EnableHeadersVisualStyles = false;
 			this.dataGridView3.Location = new System.Drawing.Point(3, 239);
+			this.dataGridView3.MultiSelect = false;
 			this.dataGridView3.Name = "dataGridView3";
 			this.dataGridView3.ReadOnly = true;
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -223,6 +224,18 @@
 			this.panel11.Name = "panel11";
 			this.panel11.Size = new System.Drawing.Size(834, 230);
 			this.panel11.TabIndex = 0;
+			// 
+			// btnSuaD
+			// 
+			this.btnSuaD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnSuaD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSuaD.Location = new System.Drawing.Point(552, 196);
+			this.btnSuaD.Name = "btnSuaD";
+			this.btnSuaD.Size = new System.Drawing.Size(88, 28);
+			this.btnSuaD.TabIndex = 34;
+			this.btnSuaD.Text = "Sửa";
+			this.btnSuaD.UseVisualStyleBackColor = true;
+			this.btnSuaD.Click += new System.EventHandler(this.btnSuaD_Click);
 			// 
 			// btnXoa
 			// 
@@ -387,6 +400,7 @@
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.EnableHeadersVisualStyles = false;
 			this.dataGridView1.Location = new System.Drawing.Point(357, 6);
+			this.dataGridView1.MultiSelect = false;
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowHeadersVisible = false;
@@ -1138,18 +1152,6 @@
 			this.label30.TabIndex = 0;
 			this.label30.Text = "Mã Phòng";
 			this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// btnSuaD
-			// 
-			this.btnSuaD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnSuaD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSuaD.Location = new System.Drawing.Point(552, 196);
-			this.btnSuaD.Name = "btnSuaD";
-			this.btnSuaD.Size = new System.Drawing.Size(88, 28);
-			this.btnSuaD.TabIndex = 34;
-			this.btnSuaD.Text = "Sửa";
-			this.btnSuaD.UseVisualStyleBackColor = true;
-			this.btnSuaD.Click += new System.EventHandler(this.btnSuaD_Click);
 			// 
 			// PhongKS
 			// 

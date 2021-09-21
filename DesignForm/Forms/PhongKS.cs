@@ -114,6 +114,7 @@ namespace DesignForm.Forms
 			this.dataGridView3.Columns["LOAIPHONG"].HeaderText = "Loại phòng";
 			this.dataGridView3.Columns["NGAYDEN"].HeaderText = "Ngày đến";
 			this.dataGridView3.Columns["THOIGIANDEN"].HeaderText = "Giờ đến";
+			this.dataGridView3.Columns["NGAYDI"].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm";
 			this.dataGridView3.Columns["NGAYDI"].HeaderText = "Ngày đi";
 		}
 
@@ -203,7 +204,7 @@ namespace DesignForm.Forms
 					cmd.Parameters.AddWithValue("@TENKH", this.txtHoTenDat.Text);
 					cmd.Parameters.AddWithValue("@NGAYDEN", this.dateNgaydenDat.Value.ToShortDateString());
 					cmd.Parameters.AddWithValue("@THOIGIANDEN", this.dateGioDat.Value.ToShortTimeString());
-					cmd.Parameters.AddWithValue("@NGAYDI", this.dateNgayDiDat.Value.ToLongTimeString());
+					cmd.Parameters.AddWithValue("@NGAYDI", this.dateNgayDiDat.Value);
 					try
 					{
 						cmd.ExecuteNonQuery();
@@ -255,6 +256,26 @@ namespace DesignForm.Forms
 				this.cbLoaiPhong.Text = this.dataGridView3.CurrentRow.Cells["LOAIPHONG"].Value.ToString();
 				this.txtMaPhongD.Text = this.dataGridView3.CurrentRow.Cells["MAPHONG"].Value.ToString();
 
+				string searchValue = this.txtMaPhongD.Text;
+				int rowIndex = -1;
+
+				dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+				try
+				{
+					foreach (DataGridViewRow row in dataGridView1.Rows)
+					{
+						if (row.Cells[0].Value.ToString().Equals(searchValue))
+						{
+							rowIndex = row.Index;
+							dataGridView1.Rows[row.Index].Selected = true;
+							break;
+						}
+					}
+				}
+				catch (Exception exc)
+				{
+					MessageBox.Show(exc.Message);
+				}
 			}
 			catch (Exception)
 			{
@@ -280,6 +301,26 @@ namespace DesignForm.Forms
 				this.cbLoaiPhong.Text = this.dataGridView3.CurrentRow.Cells["LOAIPHONG"].Value.ToString();
 				this.txtMaPhongD.Text = this.dataGridView3.CurrentRow.Cells["MAPHONG"].Value.ToString();
 
+				string searchValue = this.txtMaPhongD.Text;
+				int rowIndex = -1;
+
+				dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+				try
+				{
+					foreach (DataGridViewRow row in dataGridView1.Rows)
+					{
+						if (row.Cells[0].Value.ToString().Equals(searchValue))
+						{
+							rowIndex = row.Index;
+							dataGridView1.Rows[row.Index].Selected = true;
+							break;
+						}
+					}
+				}
+				catch (Exception exc)
+				{
+					MessageBox.Show(exc.Message);
+				}
 			}
 			catch (Exception)
 			{
@@ -494,6 +535,79 @@ namespace DesignForm.Forms
 		{
 			try
 			{
+				ClearError();
+
+				if (!CheckERorr())
+				{
+					MessageBox.Show("Chưa nhập đủ thông tin!");
+					return;
+				}
+
+				DataTable dtData = (this.dataGridView3.DataSource as DataTable);
+
+				DataRow[] dr = dtData.Select("MAPHONG = '" + this.txtMaPhongD.Text.ToString().Trim() + "'", string.Empty);
+
+				if (!this.txtMaPhongD.Text.Trim().Equals(this.dataGridView3.CurrentRow.Cells["MAPHONG"].Value.ToString()) && dr.Length > 0)
+				{
+					MessageBox.Show("Đã được đặt mời chọn phòng khác!");
+					return;
+				}
+
+
+				DialogResult dlg = MessageBox.Show("Bạn có chắc muốn đặt không!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+				if (dlg == DialogResult.Yes)
+				{
+					StringBuilder sbsSQL = new StringBuilder();
+					sbsSQL.Append("UPDATE DATPHONG SET MAPHONG = @MAPHONG, LOAIPHONG = @LOAIPHONG, TENKH = @TENKH, NGAYDEN = @NGAYDEN, THOIGIANDEN = @THOIGIANDEN, NGAYDI = @NGAYDI WHERE SDT = @SDT;");
+
+					if (!this.txtMaPhongD.Text.ToString().Equals(this.dataGridView3.CurrentRow.Cells["MAPHONG"].Value.ToString()))
+					{
+						sbsSQL.Append("UPDATE PHONG SET TRANGTHAI = 0 WHERE MAPHONG = @MAPHONGTAG;");
+						sbsSQL.Append("UPDATE PHONG SET TRANGTHAI = 1 WHERE MAPHONG = @MAPHONG;");
+					}
+
+					SqlConnection conn = Database.GetDBConnection();
+					conn.Open();
+					SqlCommand cmd = new SqlCommand(sbsSQL.ToString(), conn);
+					SqlTransaction transaction;
+					transaction = conn.BeginTransaction("SampleTransaction");
+					cmd.Connection = conn;
+					cmd.Transaction = transaction;
+					cmd.Parameters.AddWithValue("@SDT", this.txtSdtDat.Text.Trim());
+					cmd.Parameters.AddWithValue("@MAPHONG", this.txtMaPhongD.Text.Trim());
+					cmd.Parameters.AddWithValue("@LOAIPHONG", this.cbLoaiPhong.Text);
+					cmd.Parameters.AddWithValue("@TENKH", this.txtHoTenDat.Text);
+					cmd.Parameters.AddWithValue("@NGAYDEN", this.dateNgaydenDat.Value.ToShortDateString());
+					cmd.Parameters.AddWithValue("@THOIGIANDEN", this.dateGioDat.Value.ToShortTimeString());
+					cmd.Parameters.AddWithValue("@NGAYDI", this.dateNgayDiDat.Value);
+					cmd.Parameters.AddWithValue("@MAPHONGTAG", this.dataGridView3.CurrentRow.Cells["MAPHONG"].Value.ToString());
+					try
+					{
+						cmd.ExecuteNonQuery();
+						transaction.Commit();
+						conn.Close();
+						LoadDataGridDatPhong();
+						LoadDataGridPhong();
+						MessageBox.Show("Thực hiện thành công!");
+						ClearMH();
+					}
+					catch (Exception ex)
+					{
+						Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+						Console.WriteLine("  Message: {0}", ex.Message);
+
+						try
+						{
+							transaction.Rollback();
+						}
+						catch (Exception ex2)
+						{
+							Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+							Console.WriteLine("  Message: {0}", ex2.Message);
+						}
+					}
+				}
 
 			}
 			catch (Exception)

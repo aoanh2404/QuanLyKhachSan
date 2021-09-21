@@ -45,7 +45,7 @@ namespace DesignForm.Forms
 
 		private void LoadDataGrid()
 		{
-			string strSQL = "SELECT TENDV, LOAIDV, SOLUONG,  GIA1DONVI FROM DICHVU";
+			string strSQL = "SELECT TENDV, LOAIDV, SOLUONG, GIA1DONVI FROM DICHVU";
 			DataTable dtdata = new DataTable();
 			SqlConnection conn = Database.GetDBConnection();
 			conn.Open();
