@@ -13,6 +13,7 @@ namespace DesignForm.Forms
 {
 	public partial class DichVu : Form
 	{
+		private DataTable dtSoucre = new DataTable();
 		public DichVu()
 		{
 			InitializeComponent();
@@ -44,7 +45,7 @@ namespace DesignForm.Forms
 
 		private void LoadDataGrid()
 		{
-			string strSQL = "SELECT TENDV, SOLUONG,  GIA1DONVI FROM DICHVU";
+			string strSQL = "SELECT TENDV, LOAIDV, SOLUONG,  GIA1DONVI FROM DICHVU";
 			DataTable dtdata = new DataTable();
 			SqlConnection conn = Database.GetDBConnection();
 			conn.Open();
@@ -52,15 +53,41 @@ namespace DesignForm.Forms
 			dtdata.Load(cmd.ExecuteReader());
 			conn.Close();
 			SetDataGrid(dtdata);
+			this.dtSoucre = dtdata;
 		}
 
 
 		private void SetDataGrid(DataTable dtData)
 		{
-			this.dataGridView1.DataSource = dtData;
-			this.dataGridView1.Columns["TENDV"].HeaderText = "Tên";
-			this.dataGridView1.Columns["SOLUONG"].HeaderText = "Số lượng";
-			this.dataGridView1.Columns["GIA1DONVI"].HeaderText = "Giá";
+			this.dtgDV.DataSource = dtData;
+			this.dtgDV.Columns["TENDV"].HeaderText = "Tên";
+			this.dtgDV.Columns["LOAIDV"].Visible = false;
+			this.dtgDV.Columns["SOLUONG"].HeaderText = "Số lượng";
+			this.dtgDV.Columns["GIA1DONVI"].HeaderText = "Giá";
+		}
+
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				DataRow[] dtData = new DataRow[] { };
+				dtData = this.dtSoucre.Select("LOAIDV = '" + this.comboBox1.Text + "'");
+
+				DataTable dt = new DataTable();
+				dt = this.dtSoucre.Clone();
+
+				foreach (DataRow dr in dtData)
+				{
+					dt.Rows.Add(dr.ItemArray);
+				}
+
+				SetDataGrid(dt);
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
 		}
 	}
 }
