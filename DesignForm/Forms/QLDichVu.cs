@@ -20,6 +20,7 @@ namespace DesignForm.Forms
 			InitializeComponent();
 		}
 
+
 		private void QLDichVu_Load(object sender, EventArgs e)
 		{
 			LoadDataGrid();
