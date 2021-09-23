@@ -58,6 +58,7 @@ namespace DesignForm.Forms
 			}
 		}
 
+		#region TABDATPHONG
 		private void LoadDataGridPhong()
 		{
 			this.dtdata = new DataTable();
@@ -329,147 +330,6 @@ namespace DesignForm.Forms
 			}
 		}
 
-		private void ClearMH()
-		{
-			foreach (Control ctrl in this.panel11.Controls)
-			{
-				if ((ctrl is TextBox))
-				{
-					(ctrl as TextBox).Text = string.Empty;
-				}
-
-				if ((ctrl is ComboBox))
-				{
-					(ctrl as ComboBox).SelectedIndex = 0;
-				}
-
-				if (ctrl is DateTimePicker)
-				{
-					(ctrl as DateTimePicker).Value = DateTime.Now;
-				}
-			}
-		}
-
-		private void btnReset_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				ClearError();
-				ClearMH();
-			}
-			catch (Exception)
-			{
-
-				throw;
-			}
-		}
-
-		private void SaveMH()
-		{
-			foreach (Control ctrl in this.panel11.Controls)
-			{
-				if ((ctrl is TextBox))
-				{
-					(ctrl as TextBox).Tag = (ctrl as TextBox).Text;
-				}
-
-				if ((ctrl is DateTimePicker))
-				{
-					(ctrl as DateTimePicker).Tag = (ctrl as DateTimePicker).Value;
-				}
-
-				if ((ctrl is ComboBox))
-				{
-					(ctrl as ComboBox).Tag = (ctrl as ComboBox).SelectedIndex;
-				}
-			}
-		}
-
-		private bool IsChangedMH()
-		{
-			foreach (Control ctrl in this.panel11.Controls)
-			{
-				if ((ctrl is TextBox))
-				{
-					if (!Comparer.Equals((ctrl as TextBox).Tag, (ctrl as TextBox).Text))
-					{
-						return false;
-					}
-				}
-
-				if ((ctrl is DateTimePicker))
-				{
-					if (!Comparer.Equals((ctrl as DateTimePicker).Tag, (ctrl as DateTimePicker).Value))
-					{
-						return false;
-					}
-				}
-
-				if ((ctrl is ComboBox))
-				{
-					if (!Comparer.Equals((ctrl as ComboBox).Tag, (ctrl as ComboBox).SelectedIndex))
-					{
-						return false;
-					}
-				}
-			}
-
-			return true;
-		}
-
-		private bool CheckERorr()
-		{
-			ArrayList ctrlEror = new ArrayList();
-
-			foreach (Control ctrl in this.panel11.Controls)
-			{
-				if ((ctrl is TextBox) && string.IsNullOrEmpty(ctrl.Text.Trim()))
-				{
-					ctrlEror.Add(ctrl);
-				}
-
-				if ((ctrl is ComboBox) && string.IsNullOrEmpty(ctrl.Text.Trim()))
-				{
-					ctrlEror.Add(ctrl);
-				}
-			}
-
-			if (ctrlEror.Count > 0)
-			{
-				for (int i = 0; i < ctrlEror.Count; i++)
-				{
-					this.errorProvider1.SetError((ctrlEror[i] as Control), "ERROR");
-				}
-				(ctrlEror[0] as Control).Focus();
-				return false;
-			}
-			else
-			{
-				return true;
-			}
-		}
-
-		private void ClearError()
-		{
-			foreach (Control ctrl in this.panel11.Controls)
-			{
-				if ((ctrl is TextBox))
-				{
-					this.errorProvider1.SetError((ctrl as Control), string.Empty);
-				}
-
-				if ((ctrl is DateTimePicker))
-				{
-					this.errorProvider1.SetError((ctrl as Control), string.Empty);
-				}
-
-				if ((ctrl is ComboBox))
-				{
-					this.errorProvider1.SetError((ctrl as Control), string.Empty);
-				}
-			}
-		}
-
 		private void btnXoa_Click(object sender, EventArgs e)
 		{
 			try
@@ -613,6 +473,149 @@ namespace DesignForm.Forms
 			catch (Exception)
 			{
 				throw;
+			}
+		}
+
+		private void btnReset_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				ClearError();
+				ClearMH();
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+		}
+		#endregion
+
+		private void ClearMH()
+		{
+			foreach (Control ctrl in this.panel11.Controls)
+			{
+				if ((ctrl is TextBox))
+				{
+					(ctrl as TextBox).Text = string.Empty;
+				}
+
+				if ((ctrl is ComboBox))
+				{
+					(ctrl as ComboBox).SelectedIndex = 0;
+				}
+
+				if (ctrl is DateTimePicker)
+				{
+					(ctrl as DateTimePicker).Value = DateTime.Now;
+				}
+			}
+		}
+
+
+		private void SaveMH()
+		{
+			foreach (Control ctrl in this.panel11.Controls)
+			{
+				if ((ctrl is TextBox))
+				{
+					(ctrl as TextBox).Tag = (ctrl as TextBox).Text;
+				}
+
+				if ((ctrl is DateTimePicker))
+				{
+					(ctrl as DateTimePicker).Tag = (ctrl as DateTimePicker).Value;
+				}
+
+				if ((ctrl is ComboBox))
+				{
+					(ctrl as ComboBox).Tag = (ctrl as ComboBox).SelectedIndex;
+				}
+			}
+		}
+
+		private bool IsChangedMH()
+		{
+			foreach (Control ctrl in this.panel11.Controls)
+			{
+				if ((ctrl is TextBox))
+				{
+					if (!Comparer.Equals((ctrl as TextBox).Tag, (ctrl as TextBox).Text))
+					{
+						return false;
+					}
+				}
+
+				if ((ctrl is DateTimePicker))
+				{
+					if (!Comparer.Equals((ctrl as DateTimePicker).Tag, (ctrl as DateTimePicker).Value))
+					{
+						return false;
+					}
+				}
+
+				if ((ctrl is ComboBox))
+				{
+					if (!Comparer.Equals((ctrl as ComboBox).Tag, (ctrl as ComboBox).SelectedIndex))
+					{
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
+		private bool CheckERorr()
+		{
+			ArrayList ctrlEror = new ArrayList();
+
+			foreach (Control ctrl in this.panel11.Controls)
+			{
+				if ((ctrl is TextBox) && string.IsNullOrEmpty(ctrl.Text.Trim()))
+				{
+					ctrlEror.Add(ctrl);
+				}
+
+				if ((ctrl is ComboBox) && string.IsNullOrEmpty(ctrl.Text.Trim()))
+				{
+					ctrlEror.Add(ctrl);
+				}
+			}
+
+			if (ctrlEror.Count > 0)
+			{
+				for (int i = 0; i < ctrlEror.Count; i++)
+				{
+					this.errorProvider1.SetError((ctrlEror[i] as Control), "ERROR");
+				}
+				(ctrlEror[0] as Control).Focus();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+
+		private void ClearError()
+		{
+			foreach (Control ctrl in this.panel11.Controls)
+			{
+				if ((ctrl is TextBox))
+				{
+					this.errorProvider1.SetError((ctrl as Control), string.Empty);
+				}
+
+				if ((ctrl is DateTimePicker))
+				{
+					this.errorProvider1.SetError((ctrl as Control), string.Empty);
+				}
+
+				if ((ctrl is ComboBox))
+				{
+					this.errorProvider1.SetError((ctrl as Control), string.Empty);
+				}
 			}
 		}
 	}
