@@ -16,6 +16,7 @@ namespace DesignForm.Forms
 	{
 		private DataTable dtDisTinct = new DataTable();
 		private DataTable dtdata = new DataTable();
+		private DataTable dtCBN = new DataTable();
 
 		public PhongKS()
 		{
@@ -31,9 +32,7 @@ namespace DesignForm.Forms
 			this.dtDisTinct = this.dtdata.DefaultView.ToTable(true, "LOAIPHONG");
 			this.cbLoaiPhong.DataSource = dtDisTinct;
 			this.cbLoaiPhong.DisplayMember = "LOAIPHONG";
-
-			this.cbLoaiPN.DataSource = dtDisTinct;
-			this.cbLoaiPN.DisplayMember = "LOAIPHONG";
+			this.dtCBN= this.dtdata.DefaultView.ToTable(true, "LOAIPHONG");
 		}
 
 		private void LoadThem()
@@ -161,7 +160,7 @@ namespace DesignForm.Forms
 
 		private void cbLoaiPhong_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			DataRow[] dr = this.dtdata.Select("LOAIPHONG = '" + this.cbLoaiPhong.Text + "'");
+			DataRow[] dr = this.dtdata.Select("LOAIPHONG = '" +(sender as Control).Text + "'");
 
 			DataTable dtGrid = new DataTable();
 			dtGrid = this.dtdata.Clone();
@@ -683,6 +682,9 @@ namespace DesignForm.Forms
 
 		private void tabPhong_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			this.cbLoaiPN.DataSource = this.dtCBN;
+			this.cbLoaiPN.DisplayMember = "LOAIPHONG";
+
 			LoadDataGridDatPhong();
 			LoadDataGridPhong();
 		}
