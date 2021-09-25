@@ -16,6 +16,7 @@ namespace DesignForm.Forms
 	{
 		private DataTable dtDisTinct = new DataTable();
 		private DataTable dtdata = new DataTable();
+
 		public PhongKS()
 		{
 			InitializeComponent();
@@ -26,9 +27,13 @@ namespace DesignForm.Forms
 			LoadThem();
 			LoadDataGridPhong();
 			LoadDataGridDatPhong();
+
 			this.dtDisTinct = this.dtdata.DefaultView.ToTable(true, "LOAIPHONG");
 			this.cbLoaiPhong.DataSource = dtDisTinct;
 			this.cbLoaiPhong.DisplayMember = "LOAIPHONG";
+
+			this.cbLoaiPN.DataSource = dtDisTinct;
+			this.cbLoaiPN.DisplayMember = "LOAIPHONG";
 		}
 
 		private void LoadThem()
@@ -69,7 +74,15 @@ namespace DesignForm.Forms
 			this.dtdata.Load(cmd.ExecuteReader());
 			conn.Close();
 
-			DataRow[] dr = this.dtdata.Select("LOAIPHONG = '" + this.cbLoaiPhong.Text + "'");
+			DataRow[] dr = null;
+			if (this.tabPhong.SelectedTab == this.tabpDatPhong)
+			{
+				dr = this.dtdata.Select("LOAIPHONG = '" + this.cbLoaiPhong.Text + "'");
+			}
+			else if (this.tabPhong.SelectedTab == this.tabpNhanPhong)
+			{
+				dr = this.dtdata.Select("LOAIPHONG = '" + this.cbLoaiPN.Text + "'");
+			}
 
 			DataTable dtGrid = new DataTable();
 			dtGrid = this.dtdata.Clone();
@@ -99,24 +112,51 @@ namespace DesignForm.Forms
 
 		private void SetDataGridPhong(DataTable dtData)
 		{
-			this.dataGridView1.DataSource = dtData;
-			this.dataGridView1.Columns["MAPHONG"].HeaderText = "Mã phòng";
-			this.dataGridView1.Columns["LOAIPHONG"].HeaderText = "Loại phòng";
-			this.dataGridView1.Columns["GIAPHONG"].HeaderText = "Giá phòng";
-			this.dataGridView1.Columns["TRANGTHAI"].HeaderText = "Trạng thái";
+			if (this.tabPhong.SelectedTab == this.tabpDatPhong)
+			{
+				this.dataGridView1.DataSource = dtData;
+				this.dataGridView1.Columns["MAPHONG"].HeaderText = "Mã phòng";
+				this.dataGridView1.Columns["LOAIPHONG"].HeaderText = "Loại phòng";
+				this.dataGridView1.Columns["GIAPHONG"].HeaderText = "Giá phòng";
+				this.dataGridView1.Columns["TRANGTHAI"].HeaderText = "Trạng thái";
+			}
+			else if (this.tabPhong.SelectedTab == this.tabpNhanPhong)
+			{
+				this.dataGridView4.DataSource = dtData;
+				this.dataGridView4.Columns["MAPHONG"].HeaderText = "Mã phòng";
+				this.dataGridView4.Columns["LOAIPHONG"].HeaderText = "Loại phòng";
+				this.dataGridView4.Columns["LOAIPHONG"].Visible = false;
+				this.dataGridView4.Columns["GIAPHONG"].HeaderText = "Giá phòng";
+				this.dataGridView4.Columns["TRANGTHAI"].HeaderText = "Trạng thái";
+			}
 		}
 
 		private void SetDataGridDatPhong(DataTable dtData)
 		{
-			this.dataGridView3.DataSource = dtData;
-			this.dataGridView3.Columns["SDT"].HeaderText = "SĐT";
-			this.dataGridView3.Columns["TENKH"].HeaderText = "Tên khách hàng";
-			this.dataGridView3.Columns["MAPHONG"].HeaderText = "Mã phòng";
-			this.dataGridView3.Columns["LOAIPHONG"].HeaderText = "Loại phòng";
-			this.dataGridView3.Columns["NGAYDEN"].HeaderText = "Ngày đến";
-			this.dataGridView3.Columns["THOIGIANDEN"].HeaderText = "Giờ đến";
-			this.dataGridView3.Columns["NGAYDI"].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm";
-			this.dataGridView3.Columns["NGAYDI"].HeaderText = "Ngày đi";
+			if (this.tabPhong.SelectedTab == this.tabpDatPhong)
+			{
+				this.dataGridView3.DataSource = dtData;
+				this.dataGridView3.Columns["SDT"].HeaderText = "SĐT";
+				this.dataGridView3.Columns["TENKH"].HeaderText = "Tên khách hàng";
+				this.dataGridView3.Columns["MAPHONG"].HeaderText = "Mã phòng";
+				this.dataGridView3.Columns["LOAIPHONG"].HeaderText = "Loại phòng";
+				this.dataGridView3.Columns["NGAYDEN"].HeaderText = "Ngày đến";
+				this.dataGridView3.Columns["THOIGIANDEN"].HeaderText = "Giờ đến";
+				this.dataGridView3.Columns["NGAYDI"].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm";
+				this.dataGridView3.Columns["NGAYDI"].HeaderText = "Ngày đi";
+			}
+			else if (this.tabPhong.SelectedTab == this.tabpNhanPhong)
+			{
+				this.dataGridView2.DataSource = dtData;
+				this.dataGridView2.Columns["SDT"].HeaderText = "SĐT";
+				this.dataGridView2.Columns["TENKH"].HeaderText = "Tên khách hàng";
+				this.dataGridView2.Columns["MAPHONG"].HeaderText = "Mã phòng";
+				this.dataGridView2.Columns["LOAIPHONG"].HeaderText = "Loại phòng";
+				this.dataGridView2.Columns["NGAYDEN"].HeaderText = "Ngày đến";
+				this.dataGridView2.Columns["THOIGIANDEN"].HeaderText = "Giờ đến";
+				this.dataGridView2.Columns["NGAYDI"].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm";
+				this.dataGridView2.Columns["NGAYDI"].HeaderText = "Ngày đi";
+			}
 		}
 
 		private void cbLoaiPhong_SelectedIndexChanged(object sender, EventArgs e)
@@ -512,7 +552,6 @@ namespace DesignForm.Forms
 			}
 		}
 
-
 		private void SaveMH()
 		{
 			foreach (Control ctrl in this.panel11.Controls)
@@ -600,23 +639,112 @@ namespace DesignForm.Forms
 
 		private void ClearError()
 		{
-			foreach (Control ctrl in this.panel11.Controls)
+			if (this.tabPhong.SelectedTab == this.tabpDatPhong)
 			{
-				if ((ctrl is TextBox))
+				foreach (Control ctrl in this.panel11.Controls)
 				{
-					this.errorProvider1.SetError((ctrl as Control), string.Empty);
-				}
+					if ((ctrl is TextBox))
+					{
+						this.errorProvider1.SetError((ctrl as Control), string.Empty);
+					}
 
-				if ((ctrl is DateTimePicker))
-				{
-					this.errorProvider1.SetError((ctrl as Control), string.Empty);
-				}
+					if ((ctrl is DateTimePicker))
+					{
+						this.errorProvider1.SetError((ctrl as Control), string.Empty);
+					}
 
-				if ((ctrl is ComboBox))
-				{
-					this.errorProvider1.SetError((ctrl as Control), string.Empty);
+					if ((ctrl is ComboBox))
+					{
+						this.errorProvider1.SetError((ctrl as Control), string.Empty);
+					}
 				}
 			}
+			else if (this.tabPhong.SelectedTab == this.tabpNhanPhong)
+			{
+				foreach (Control ctrl in this.panel2.Controls)
+				{
+					if ((ctrl is TextBox))
+					{
+						this.errorProvider1.SetError((ctrl as Control), string.Empty);
+					}
+
+					if ((ctrl is DateTimePicker))
+					{
+						this.errorProvider1.SetError((ctrl as Control), string.Empty);
+					}
+
+					if ((ctrl is ComboBox))
+					{
+						this.errorProvider1.SetError((ctrl as Control), string.Empty);
+					}
+				}
+			}
+		}
+
+		private void tabPhong_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			LoadDataGridDatPhong();
+			LoadDataGridPhong();
+		}
+
+		private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			ClearError();
+			if (this.dataGridView2.RowCount == 0)
+			{
+				return;
+			}
+			try
+			{
+				this.txtSDTN.Text = this.dataGridView2.CurrentRow.Cells["SDT"].Value.ToString();
+				this.txtTenKH.Text = this.dataGridView2.CurrentRow.Cells["TENKH"].Value.ToString();
+				this.txtSDTKH.Text = this.dataGridView2.CurrentRow.Cells["SDT"].Value.ToString();
+				this.dateNgaydenN.Value = Convert.ToDateTime(this.dataGridView2.CurrentRow.Cells["NGAYDEN"].Value.ToString());
+				this.dateNgaydiN.Value = Convert.ToDateTime(this.dataGridView2.CurrentRow.Cells["NGAYDI"].Value.ToString());
+				this.cbLoaiPN.Text = this.dataGridView2.CurrentRow.Cells["LOAIPHONG"].Value.ToString();
+				this.txtMAPN.Text = this.dataGridView2.CurrentRow.Cells["MAPHONG"].Value.ToString();
+				DataRow[] dr = this.dtdata.Select("MAPHONG = '" + this.txtMAPN.Text + "'");
+				if (dr != null)
+				{
+					this.txtGiaPN.Text = dr[0]["GIAPHONG"].ToString();
+				}
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+		}
+
+		private void dataGridView2_Key(object sender, KeyEventArgs e)
+		{
+			ClearError();
+			if (this.dataGridView2.RowCount == 0)
+			{
+				return;
+			}
+			try
+			{
+				this.txtSDTN.Text = this.dataGridView2.CurrentRow.Cells["SDT"].Value.ToString();
+				this.txtTenKH.Text = this.dataGridView2.CurrentRow.Cells["TENKH"].Value.ToString();
+				this.txtSDTKH.Text = this.dataGridView2.CurrentRow.Cells["SDT"].Value.ToString();
+				this.dateNgaydenN.Value = Convert.ToDateTime(this.dataGridView2.CurrentRow.Cells["NGAYDEN"].Value.ToString());
+				this.dateNgaydiN.Value = Convert.ToDateTime(this.dataGridView2.CurrentRow.Cells["NGAYDI"].Value.ToString());
+				this.cbLoaiPN.Text = this.dataGridView2.CurrentRow.Cells["LOAIPHONG"].Value.ToString();
+				this.txtMAPN.Text = this.dataGridView2.CurrentRow.Cells["MAPHONG"].Value.ToString();
+				DataRow[] dr = this.dtdata.Select("MAPHONG = '" + this.txtMAPN.Text + "'");
+				if (dr != null)
+				{
+					this.txtGiaPN.Text = dr[0]["GIAPHONG"].ToString();
+				}
+
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+
 		}
 	}
 }
