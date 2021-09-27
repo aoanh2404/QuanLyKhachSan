@@ -56,8 +56,11 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
 			this.btnReset = new System.Windows.Forms.Button();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.panel2 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// txtID
@@ -146,24 +149,26 @@
 			// rdNam
 			// 
 			this.rdNam.AutoSize = true;
+			this.rdNam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.rdNam.Location = new System.Drawing.Point(242, 90);
 			this.rdNam.Name = "rdNam";
 			this.rdNam.Size = new System.Drawing.Size(58, 22);
 			this.rdNam.TabIndex = 8;
 			this.rdNam.TabStop = true;
 			this.rdNam.Text = "Nam";
-			this.rdNam.UseVisualStyleBackColor = true;
+			this.rdNam.UseVisualStyleBackColor = false;
 			// 
 			// rdnu
 			// 
 			this.rdnu.AutoSize = true;
+			this.rdnu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.rdnu.Location = new System.Drawing.Point(323, 90);
 			this.rdnu.Name = "rdnu";
 			this.rdnu.Size = new System.Drawing.Size(45, 22);
 			this.rdnu.TabIndex = 9;
 			this.rdnu.TabStop = true;
 			this.rdnu.Text = "Nữ";
-			this.rdnu.UseVisualStyleBackColor = true;
+			this.rdnu.UseVisualStyleBackColor = false;
 			// 
 			// label6
 			// 
@@ -212,7 +217,7 @@
 			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.EnableHeadersVisualStyles = false;
-			this.dataGridView1.Location = new System.Drawing.Point(12, 200);
+			this.dataGridView1.Location = new System.Drawing.Point(3, 242);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -225,7 +230,7 @@
 			this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridView1.RowHeadersVisible = false;
 			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView1.Size = new System.Drawing.Size(823, 150);
+			this.dataGridView1.Size = new System.Drawing.Size(844, 108);
 			this.dataGridView1.TabIndex = 18;
 			this.dataGridView1.TabStop = false;
 			// 
@@ -242,8 +247,9 @@
 			// 
 			// btnXoa
 			// 
+			this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnXoa.Location = new System.Drawing.Point(569, 169);
+			this.btnXoa.Location = new System.Drawing.Point(453, 4);
 			this.btnXoa.Name = "btnXoa";
 			this.btnXoa.Size = new System.Drawing.Size(88, 28);
 			this.btnXoa.TabIndex = 20;
@@ -252,8 +258,9 @@
 			// 
 			// btnSua
 			// 
+			this.btnSua.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.btnSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSua.Location = new System.Drawing.Point(664, 169);
+			this.btnSua.Location = new System.Drawing.Point(631, 4);
 			this.btnSua.Name = "btnSua";
 			this.btnSua.Size = new System.Drawing.Size(88, 28);
 			this.btnSua.TabIndex = 21;
@@ -262,8 +269,9 @@
 			// 
 			// btnThem
 			// 
+			this.btnThem.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnThem.Location = new System.Drawing.Point(475, 169);
+			this.btnThem.Location = new System.Drawing.Point(275, 4);
 			this.btnThem.Name = "btnThem";
 			this.btnThem.Size = new System.Drawing.Size(88, 28);
 			this.btnThem.TabIndex = 19;
@@ -313,19 +321,46 @@
 			// 
 			// btnReset
 			// 
+			this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnReset.Location = new System.Drawing.Point(665, 12);
+			this.btnReset.Location = new System.Drawing.Point(97, 4);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.Size = new System.Drawing.Size(88, 28);
 			this.btnReset.TabIndex = 19;
 			this.btnReset.Text = "ReSet";
 			this.btnReset.UseVisualStyleBackColor = true;
 			// 
+			// panel1
+			// 
+			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel1.BackColor = System.Drawing.SystemColors.Menu;
+			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel1.Controls.Add(this.btnThem);
+			this.panel1.Controls.Add(this.btnXoa);
+			this.panel1.Controls.Add(this.btnSua);
+			this.panel1.Controls.Add(this.btnReset);
+			this.panel1.Location = new System.Drawing.Point(3, 203);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(844, 37);
+			this.panel1.TabIndex = 22;
+			// 
+			// panel2
+			// 
+			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.panel2.Location = new System.Drawing.Point(3, 2);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(843, 199);
+			this.panel2.TabIndex = 23;
+			// 
 			// QuanLyNhanVien
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(848, 358);
+			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.txtID);
@@ -340,15 +375,12 @@
 			this.Controls.Add(this.cbChucvu);
 			this.Controls.Add(this.txtLuong);
 			this.Controls.Add(this.dataGridView1);
-			this.Controls.Add(this.btnXoa);
-			this.Controls.Add(this.btnSua);
-			this.Controls.Add(this.btnReset);
-			this.Controls.Add(this.btnThem);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label4);
+			this.Controls.Add(this.panel2);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -361,6 +393,7 @@
 			this.Load += new System.EventHandler(this.QuanLyNhanVien_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -392,5 +425,7 @@
         private System.Windows.Forms.DateTimePicker dateNamSinh;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnReset;
-    }
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel panel2;
+	}
 }

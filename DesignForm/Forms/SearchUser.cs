@@ -24,6 +24,11 @@ namespace DesignForm
 		{
 			try
 			{
+				if (dataGridView1.RowCount == 0)
+				{
+					return;
+				}
+
 				drUserID = ((DataTable)this.dataGridView1.DataSource).Rows[e.RowIndex];
 				this.Close();
 			}

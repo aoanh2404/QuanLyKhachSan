@@ -39,12 +39,14 @@ namespace DesignForm
 					this.button6.Visible = true;
 					this.button5.Visible = true;
 					this.button4.Visible = true;
+					this.button8.Visible = true;
 				}
 
 				if (this.strQuyenHan.ToString().Equals("1"))
 				{
 					this.button7.Visible = true;
 					this.button6.Visible = true;
+					this.button8.Visible = true;
 				}
 
 			}
@@ -203,6 +205,11 @@ namespace DesignForm
 			{
 
 			}
+		}
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new Forms.KhachHang(), sender);
 		}
 	}
 }

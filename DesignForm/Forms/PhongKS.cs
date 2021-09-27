@@ -37,7 +37,7 @@ namespace DesignForm.Forms
 
 		private void LoadThem()
 		{
-			foreach (Control btn in this.panel11.Controls)
+			foreach (Control btn in this.panel6.Controls)
 			{
 				if (btn.GetType() == typeof(Button))
 				{
@@ -47,7 +47,6 @@ namespace DesignForm.Forms
 					btns.FlatAppearance.BorderColor = ThemColor.SecondaryColor;
 				}
 			}
-
 			foreach (Control btn in this.panel5.Controls)
 			{
 				if (btn.GetType() == typeof(Button))
@@ -59,6 +58,8 @@ namespace DesignForm.Forms
 				}
 				this.label1.ForeColor = ThemColor.SecondaryColor;
 				this.label11.ForeColor = ThemColor.PrimaryColor;
+
+
 			}
 		}
 
@@ -700,7 +701,6 @@ namespace DesignForm.Forms
 			{
 				this.txtSDTN.Text = this.dataGridView2.CurrentRow.Cells["SDT"].Value.ToString();
 				this.txtTenKH.Text = this.dataGridView2.CurrentRow.Cells["TENKH"].Value.ToString();
-				this.txtSDTKH.Text = this.dataGridView2.CurrentRow.Cells["SDT"].Value.ToString();
 				this.dateNgaydenN.Value = Convert.ToDateTime(this.dataGridView2.CurrentRow.Cells["NGAYDEN"].Value.ToString());
 				this.dateNgaydiN.Value = Convert.ToDateTime(this.dataGridView2.CurrentRow.Cells["NGAYDI"].Value.ToString());
 				this.cbLoaiPN.Text = this.dataGridView2.CurrentRow.Cells["LOAIPHONG"].Value.ToString();
@@ -709,6 +709,27 @@ namespace DesignForm.Forms
 				if (dr != null)
 				{
 					this.txtGiaPN.Text = dr[0]["GIAPHONG"].ToString();
+				}
+
+				string searchValue = this.txtMAPN.Text;
+				int rowIndex = -1;
+
+				dataGridView4.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+				try
+				{
+					foreach (DataGridViewRow row in dataGridView4.Rows)
+					{
+						if (row.Cells[0].Value.ToString().Equals(searchValue))
+						{
+							rowIndex = row.Index;
+							dataGridView4.Rows[row.Index].Selected = true;
+							break;
+						}
+					}
+				}
+				catch (Exception exc)
+				{
+					MessageBox.Show(exc.Message);
 				}
 			}
 			catch (Exception)
@@ -729,7 +750,6 @@ namespace DesignForm.Forms
 			{
 				this.txtSDTN.Text = this.dataGridView2.CurrentRow.Cells["SDT"].Value.ToString();
 				this.txtTenKH.Text = this.dataGridView2.CurrentRow.Cells["TENKH"].Value.ToString();
-				this.txtSDTKH.Text = this.dataGridView2.CurrentRow.Cells["SDT"].Value.ToString();
 				this.dateNgaydenN.Value = Convert.ToDateTime(this.dataGridView2.CurrentRow.Cells["NGAYDEN"].Value.ToString());
 				this.dateNgaydiN.Value = Convert.ToDateTime(this.dataGridView2.CurrentRow.Cells["NGAYDI"].Value.ToString());
 				this.cbLoaiPN.Text = this.dataGridView2.CurrentRow.Cells["LOAIPHONG"].Value.ToString();
@@ -738,6 +758,27 @@ namespace DesignForm.Forms
 				if (dr != null)
 				{
 					this.txtGiaPN.Text = dr[0]["GIAPHONG"].ToString();
+				}
+
+				string searchValue = this.txtMAPN.Text;
+				int rowIndex = -1;
+
+				dataGridView4.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+				try
+				{
+					foreach (DataGridViewRow row in dataGridView4.Rows)
+					{
+						if (row.Cells[0].Value.ToString().Equals(searchValue))
+						{
+							rowIndex = row.Index;
+							dataGridView4.Rows[row.Index].Selected = true;
+							break;
+						}
+					}
+				}
+				catch (Exception exc)
+				{
+					MessageBox.Show(exc.Message);
 				}
 
 			}

@@ -83,10 +83,11 @@
 			// 
 			this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel5.BackColor = System.Drawing.SystemColors.Menu;
 			this.panel5.Controls.Add(this.btnXoa);
 			this.panel5.Controls.Add(this.btnSua);
 			this.panel5.Controls.Add(this.btnThem);
-			this.panel5.Location = new System.Drawing.Point(5, 285);
+			this.panel5.Location = new System.Drawing.Point(5, 284);
 			this.panel5.Name = "panel5";
 			this.panel5.Size = new System.Drawing.Size(838, 36);
 			this.panel5.TabIndex = 79;
@@ -175,6 +176,7 @@
 			// 
 			// panel2
 			// 
+			this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panel2.Controls.Add(this.dtgDV);
 			this.panel2.Controls.Add(this.btnTra);
@@ -417,7 +419,7 @@
 			// 
 			// panel3
 			// 
-			this.panel3.BackColor = System.Drawing.Color.LightGray;
+			this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.panel3.Controls.Add(this.txtTongCong);
 			this.panel3.Controls.Add(this.label5);
 			this.panel3.Controls.Add(this.txtMaPhong);

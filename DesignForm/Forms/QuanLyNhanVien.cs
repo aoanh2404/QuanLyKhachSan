@@ -316,7 +316,7 @@ namespace DesignForm
 
 		private void LoadThem()
 		{
-			foreach (Control btn in this.Controls)
+			foreach (Control btn in this.panel1.Controls)
 			{
 				if (btn.GetType() == typeof(Button))
 				{

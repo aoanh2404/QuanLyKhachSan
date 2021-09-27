@@ -60,7 +60,7 @@
 			this.label17 = new System.Windows.Forms.Label();
 			this.txtDiaChi = new System.Windows.Forms.TextBox();
 			this.label9 = new System.Windows.Forms.Label();
-			this.txtSDTKH = new System.Windows.Forms.TextBox();
+			this.txtNamsinh = new System.Windows.Forms.TextBox();
 			this.label14 = new System.Windows.Forms.Label();
 			this.txtMAKH = new System.Windows.Forms.TextBox();
 			this.label15 = new System.Windows.Forms.Label();
@@ -71,11 +71,13 @@
 			this.txtSDTN = new System.Windows.Forms.TextBox();
 			this.label13 = new System.Windows.Forms.Label();
 			this.tabpDatPhong = new System.Windows.Forms.TabPage();
+			this.panel6 = new System.Windows.Forms.Panel();
+			this.btnSuaD = new System.Windows.Forms.Button();
+			this.btnReset = new System.Windows.Forms.Button();
+			this.btnXoa = new System.Windows.Forms.Button();
+			this.btnDatPhong = new System.Windows.Forms.Button();
 			this.dataGridView3 = new System.Windows.Forms.DataGridView();
 			this.panel11 = new System.Windows.Forms.Panel();
-			this.btnSuaD = new System.Windows.Forms.Button();
-			this.btnXoa = new System.Windows.Forms.Button();
-			this.btnReset = new System.Windows.Forms.Button();
 			this.label31 = new System.Windows.Forms.Label();
 			this.cbLoaiPhong = new System.Windows.Forms.ComboBox();
 			this.dateGioDat = new System.Windows.Forms.DateTimePicker();
@@ -89,10 +91,12 @@
 			this.txtMaPhongD = new System.Windows.Forms.TextBox();
 			this.dateNgaydenDat = new System.Windows.Forms.DateTimePicker();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.btnDatPhong = new System.Windows.Forms.Button();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.tabPhong = new System.Windows.Forms.TabControl();
+			this.label19 = new System.Windows.Forms.Label();
+			this.rdNam = new System.Windows.Forms.RadioButton();
+			this.rdnu = new System.Windows.Forms.RadioButton();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.tabpNhanPhong.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -103,6 +107,7 @@
 			this.panel1.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.tabpDatPhong.SuspendLayout();
+			this.panel6.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.panel11.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -159,7 +164,7 @@
 			this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			this.dataGridView2.RowHeadersVisible = false;
 			this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView2.Size = new System.Drawing.Size(834, 84);
+			this.dataGridView2.Size = new System.Drawing.Size(834, 89);
 			this.dataGridView2.TabIndex = 77;
 			this.dataGridView2.TabStop = false;
 			this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
@@ -170,6 +175,7 @@
 			// 
 			this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel5.BackColor = System.Drawing.SystemColors.Menu;
 			this.panel5.Controls.Add(this.button4);
 			this.panel5.Controls.Add(this.button3);
 			this.panel5.Controls.Add(this.button2);
@@ -227,6 +233,9 @@
 			// panel2
 			// 
 			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel2.Controls.Add(this.rdNam);
+			this.panel2.Controls.Add(this.rdnu);
+			this.panel2.Controls.Add(this.label19);
 			this.panel2.Controls.Add(this.dataGridView4);
 			this.panel2.Controls.Add(this.label8);
 			this.panel2.Controls.Add(this.cbLoaiPN);
@@ -242,7 +251,7 @@
 			this.panel2.Controls.Add(this.label17);
 			this.panel2.Controls.Add(this.txtDiaChi);
 			this.panel2.Controls.Add(this.label9);
-			this.panel2.Controls.Add(this.txtSDTKH);
+			this.panel2.Controls.Add(this.txtNamsinh);
 			this.panel2.Controls.Add(this.label14);
 			this.panel2.Controls.Add(this.txtMAKH);
 			this.panel2.Controls.Add(this.label15);
@@ -418,7 +427,7 @@
 			// 
 			// txtDiaChi
 			// 
-			this.txtDiaChi.Location = new System.Drawing.Point(96, 107);
+			this.txtDiaChi.Location = new System.Drawing.Point(96, 133);
 			this.txtDiaChi.Name = "txtDiaChi";
 			this.txtDiaChi.Size = new System.Drawing.Size(174, 24);
 			this.txtDiaChi.TabIndex = 8;
@@ -427,19 +436,19 @@
 			// 
 			this.label9.BackColor = System.Drawing.Color.Black;
 			this.label9.ForeColor = System.Drawing.Color.White;
-			this.label9.Location = new System.Drawing.Point(8, 107);
+			this.label9.Location = new System.Drawing.Point(8, 133);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(88, 24);
 			this.label9.TabIndex = 7;
 			this.label9.Text = "Địa chỉ";
 			this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// txtSDTKH
+			// txtNamsinh
 			// 
-			this.txtSDTKH.Location = new System.Drawing.Point(96, 81);
-			this.txtSDTKH.Name = "txtSDTKH";
-			this.txtSDTKH.Size = new System.Drawing.Size(174, 24);
-			this.txtSDTKH.TabIndex = 6;
+			this.txtNamsinh.Location = new System.Drawing.Point(96, 81);
+			this.txtNamsinh.Name = "txtNamsinh";
+			this.txtNamsinh.Size = new System.Drawing.Size(174, 24);
+			this.txtNamsinh.TabIndex = 6;
 			// 
 			// label14
 			// 
@@ -449,7 +458,7 @@
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(88, 24);
 			this.label14.TabIndex = 5;
-			this.label14.Text = "SĐT";
+			this.label14.Text = "Năm sinh";
 			this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// txtMAKH
@@ -510,9 +519,9 @@
 			// 
 			// txtSDTN
 			// 
-			this.txtSDTN.Location = new System.Drawing.Point(96, 7);
+			this.txtSDTN.Location = new System.Drawing.Point(90, 7);
 			this.txtSDTN.Name = "txtSDTN";
-			this.txtSDTN.Size = new System.Drawing.Size(190, 24);
+			this.txtSDTN.Size = new System.Drawing.Size(107, 24);
 			this.txtSDTN.TabIndex = 1;
 			// 
 			// label13
@@ -521,13 +530,14 @@
 			this.label13.ForeColor = System.Drawing.Color.White;
 			this.label13.Location = new System.Drawing.Point(8, 7);
 			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(88, 24);
+			this.label13.Size = new System.Drawing.Size(82, 24);
 			this.label13.TabIndex = 0;
 			this.label13.Text = "SĐT KH";
 			this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tabpDatPhong
 			// 
+			this.tabpDatPhong.Controls.Add(this.panel6);
 			this.tabpDatPhong.Controls.Add(this.dataGridView3);
 			this.tabpDatPhong.Controls.Add(this.panel11);
 			this.tabpDatPhong.Location = new System.Drawing.Point(4, 27);
@@ -537,6 +547,68 @@
 			this.tabpDatPhong.TabIndex = 0;
 			this.tabpDatPhong.Text = "Đặt Phòng";
 			this.tabpDatPhong.UseVisualStyleBackColor = true;
+			// 
+			// panel6
+			// 
+			this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel6.BackColor = System.Drawing.SystemColors.Menu;
+			this.panel6.Controls.Add(this.btnSuaD);
+			this.panel6.Controls.Add(this.btnReset);
+			this.panel6.Controls.Add(this.btnXoa);
+			this.panel6.Controls.Add(this.btnDatPhong);
+			this.panel6.Location = new System.Drawing.Point(3, 200);
+			this.panel6.Name = "panel6";
+			this.panel6.Size = new System.Drawing.Size(834, 36);
+			this.panel6.TabIndex = 9;
+			// 
+			// btnSuaD
+			// 
+			this.btnSuaD.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnSuaD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSuaD.Location = new System.Drawing.Point(292, 5);
+			this.btnSuaD.Name = "btnSuaD";
+			this.btnSuaD.Size = new System.Drawing.Size(88, 28);
+			this.btnSuaD.TabIndex = 34;
+			this.btnSuaD.Text = "Sửa";
+			this.btnSuaD.UseVisualStyleBackColor = true;
+			this.btnSuaD.Click += new System.EventHandler(this.btnSuaD_Click);
+			// 
+			// btnReset
+			// 
+			this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnReset.Location = new System.Drawing.Point(116, 5);
+			this.btnReset.Name = "btnReset";
+			this.btnReset.Size = new System.Drawing.Size(88, 28);
+			this.btnReset.TabIndex = 32;
+			this.btnReset.Text = "ReSet";
+			this.btnReset.UseVisualStyleBackColor = true;
+			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+			// 
+			// btnXoa
+			// 
+			this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnXoa.Location = new System.Drawing.Point(468, 5);
+			this.btnXoa.Name = "btnXoa";
+			this.btnXoa.Size = new System.Drawing.Size(88, 28);
+			this.btnXoa.TabIndex = 33;
+			this.btnXoa.Text = "Huỷ đặt";
+			this.btnXoa.UseVisualStyleBackColor = true;
+			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+			// 
+			// btnDatPhong
+			// 
+			this.btnDatPhong.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnDatPhong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnDatPhong.Location = new System.Drawing.Point(644, 5);
+			this.btnDatPhong.Name = "btnDatPhong";
+			this.btnDatPhong.Size = new System.Drawing.Size(88, 28);
+			this.btnDatPhong.TabIndex = 31;
+			this.btnDatPhong.Text = "Đặt phòng";
+			this.btnDatPhong.UseVisualStyleBackColor = true;
+			this.btnDatPhong.Click += new System.EventHandler(this.btnDatPhong_Click);
 			// 
 			// dataGridView3
 			// 
@@ -581,9 +653,6 @@
 			// panel11
 			// 
 			this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.panel11.Controls.Add(this.btnSuaD);
-			this.panel11.Controls.Add(this.btnXoa);
-			this.panel11.Controls.Add(this.btnReset);
 			this.panel11.Controls.Add(this.label31);
 			this.panel11.Controls.Add(this.cbLoaiPhong);
 			this.panel11.Controls.Add(this.dateGioDat);
@@ -597,50 +666,13 @@
 			this.panel11.Controls.Add(this.txtMaPhongD);
 			this.panel11.Controls.Add(this.dateNgaydenDat);
 			this.panel11.Controls.Add(this.dataGridView1);
-			this.panel11.Controls.Add(this.btnDatPhong);
 			this.panel11.Controls.Add(this.label6);
 			this.panel11.Controls.Add(this.label7);
 			this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel11.Location = new System.Drawing.Point(3, 3);
 			this.panel11.Name = "panel11";
-			this.panel11.Size = new System.Drawing.Size(834, 230);
+			this.panel11.Size = new System.Drawing.Size(834, 195);
 			this.panel11.TabIndex = 0;
-			// 
-			// btnSuaD
-			// 
-			this.btnSuaD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnSuaD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSuaD.Location = new System.Drawing.Point(552, 196);
-			this.btnSuaD.Name = "btnSuaD";
-			this.btnSuaD.Size = new System.Drawing.Size(88, 28);
-			this.btnSuaD.TabIndex = 34;
-			this.btnSuaD.Text = "Sửa";
-			this.btnSuaD.UseVisualStyleBackColor = true;
-			this.btnSuaD.Click += new System.EventHandler(this.btnSuaD_Click);
-			// 
-			// btnXoa
-			// 
-			this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnXoa.Location = new System.Drawing.Point(646, 196);
-			this.btnXoa.Name = "btnXoa";
-			this.btnXoa.Size = new System.Drawing.Size(88, 28);
-			this.btnXoa.TabIndex = 33;
-			this.btnXoa.Text = "Huỷ đặt";
-			this.btnXoa.UseVisualStyleBackColor = true;
-			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-			// 
-			// btnReset
-			// 
-			this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnReset.Location = new System.Drawing.Point(458, 196);
-			this.btnReset.Name = "btnReset";
-			this.btnReset.Size = new System.Drawing.Size(88, 28);
-			this.btnReset.TabIndex = 32;
-			this.btnReset.Text = "ReSet";
-			this.btnReset.UseVisualStyleBackColor = true;
-			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
 			// 
 			// label31
 			// 
@@ -793,18 +825,6 @@
 			this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_Key);
 			this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_Key);
 			// 
-			// btnDatPhong
-			// 
-			this.btnDatPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnDatPhong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnDatPhong.Location = new System.Drawing.Point(740, 196);
-			this.btnDatPhong.Name = "btnDatPhong";
-			this.btnDatPhong.Size = new System.Drawing.Size(88, 28);
-			this.btnDatPhong.TabIndex = 31;
-			this.btnDatPhong.Text = "Đặt phòng";
-			this.btnDatPhong.UseVisualStyleBackColor = true;
-			this.btnDatPhong.Click += new System.EventHandler(this.btnDatPhong_Click);
-			// 
 			// label6
 			// 
 			this.label6.BackColor = System.Drawing.Color.Black;
@@ -839,6 +859,43 @@
 			this.tabPhong.TabIndex = 0;
 			this.tabPhong.SelectedIndexChanged += new System.EventHandler(this.tabPhong_SelectedIndexChanged);
 			// 
+			// label19
+			// 
+			this.label19.BackColor = System.Drawing.Color.Black;
+			this.label19.ForeColor = System.Drawing.Color.White;
+			this.label19.Location = new System.Drawing.Point(8, 107);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(88, 24);
+			this.label19.TabIndex = 32;
+			this.label19.Text = "Giới tính";
+			this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// rdNam
+			// 
+			this.rdNam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.rdNam.AutoSize = true;
+			this.rdNam.BackColor = System.Drawing.Color.Transparent;
+			this.rdNam.Location = new System.Drawing.Point(98, 108);
+			this.rdNam.Name = "rdNam";
+			this.rdNam.Size = new System.Drawing.Size(58, 22);
+			this.rdNam.TabIndex = 82;
+			this.rdNam.TabStop = true;
+			this.rdNam.Text = "Nam";
+			this.rdNam.UseVisualStyleBackColor = false;
+			// 
+			// rdnu
+			// 
+			this.rdnu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.rdnu.AutoSize = true;
+			this.rdnu.BackColor = System.Drawing.Color.Transparent;
+			this.rdnu.Location = new System.Drawing.Point(177, 108);
+			this.rdnu.Name = "rdnu";
+			this.rdnu.Size = new System.Drawing.Size(45, 22);
+			this.rdnu.TabIndex = 83;
+			this.rdnu.TabStop = true;
+			this.rdnu.Text = "Nữ";
+			this.rdnu.UseVisualStyleBackColor = false;
+			// 
 			// PhongKS
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -865,6 +922,7 @@
 			this.panel3.ResumeLayout(false);
 			this.panel3.PerformLayout();
 			this.tabpDatPhong.ResumeLayout(false);
+			this.panel6.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
 			this.panel11.ResumeLayout(false);
 			this.panel11.PerformLayout();
@@ -921,7 +979,7 @@
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.TextBox txtDiaChi;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.TextBox txtSDTKH;
+		private System.Windows.Forms.TextBox txtNamsinh;
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.TextBox txtMAKH;
 		private System.Windows.Forms.Label label15;
@@ -933,5 +991,9 @@
 		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.DataGridView dataGridView2;
 		private System.Windows.Forms.DataGridView dataGridView4;
+		private System.Windows.Forms.Panel panel6;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.RadioButton rdNam;
+		private System.Windows.Forms.RadioButton rdnu;
 	}
 }
