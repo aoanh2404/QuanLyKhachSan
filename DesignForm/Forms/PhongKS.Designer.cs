@@ -45,6 +45,9 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.rdNam = new System.Windows.Forms.RadioButton();
+			this.rdnu = new System.Windows.Forms.RadioButton();
+			this.label19 = new System.Windows.Forms.Label();
 			this.dataGridView4 = new System.Windows.Forms.DataGridView();
 			this.label8 = new System.Windows.Forms.Label();
 			this.cbLoaiPN = new System.Windows.Forms.ComboBox();
@@ -94,9 +97,6 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.tabPhong = new System.Windows.Forms.TabControl();
-			this.label19 = new System.Windows.Forms.Label();
-			this.rdNam = new System.Windows.Forms.RadioButton();
-			this.rdnu = new System.Windows.Forms.RadioButton();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.tabpNhanPhong.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -262,6 +262,41 @@
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(828, 161);
 			this.panel2.TabIndex = 0;
+			// 
+			// rdNam
+			// 
+			this.rdNam.AutoSize = true;
+			this.rdNam.BackColor = System.Drawing.Color.Transparent;
+			this.rdNam.Location = new System.Drawing.Point(98, 108);
+			this.rdNam.Name = "rdNam";
+			this.rdNam.Size = new System.Drawing.Size(58, 22);
+			this.rdNam.TabIndex = 82;
+			this.rdNam.TabStop = true;
+			this.rdNam.Text = "Nam";
+			this.rdNam.UseVisualStyleBackColor = false;
+			// 
+			// rdnu
+			// 
+			this.rdnu.AutoSize = true;
+			this.rdnu.BackColor = System.Drawing.Color.Transparent;
+			this.rdnu.Location = new System.Drawing.Point(177, 108);
+			this.rdnu.Name = "rdnu";
+			this.rdnu.Size = new System.Drawing.Size(45, 22);
+			this.rdnu.TabIndex = 83;
+			this.rdnu.TabStop = true;
+			this.rdnu.Text = "Nữ";
+			this.rdnu.UseVisualStyleBackColor = false;
+			// 
+			// label19
+			// 
+			this.label19.BackColor = System.Drawing.Color.Black;
+			this.label19.ForeColor = System.Drawing.Color.White;
+			this.label19.Location = new System.Drawing.Point(8, 107);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(88, 24);
+			this.label19.TabIndex = 32;
+			this.label19.Text = "Giới tính";
+			this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// dataGridView4
 			// 
@@ -858,43 +893,6 @@
 			this.tabPhong.Size = new System.Drawing.Size(848, 380);
 			this.tabPhong.TabIndex = 0;
 			this.tabPhong.SelectedIndexChanged += new System.EventHandler(this.tabPhong_SelectedIndexChanged);
-			// 
-			// label19
-			// 
-			this.label19.BackColor = System.Drawing.Color.Black;
-			this.label19.ForeColor = System.Drawing.Color.White;
-			this.label19.Location = new System.Drawing.Point(8, 107);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(88, 24);
-			this.label19.TabIndex = 32;
-			this.label19.Text = "Giới tính";
-			this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// rdNam
-			// 
-			this.rdNam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.rdNam.AutoSize = true;
-			this.rdNam.BackColor = System.Drawing.Color.Transparent;
-			this.rdNam.Location = new System.Drawing.Point(98, 108);
-			this.rdNam.Name = "rdNam";
-			this.rdNam.Size = new System.Drawing.Size(58, 22);
-			this.rdNam.TabIndex = 82;
-			this.rdNam.TabStop = true;
-			this.rdNam.Text = "Nam";
-			this.rdNam.UseVisualStyleBackColor = false;
-			// 
-			// rdnu
-			// 
-			this.rdnu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.rdnu.AutoSize = true;
-			this.rdnu.BackColor = System.Drawing.Color.Transparent;
-			this.rdnu.Location = new System.Drawing.Point(177, 108);
-			this.rdnu.Name = "rdnu";
-			this.rdnu.Size = new System.Drawing.Size(45, 22);
-			this.rdnu.TabIndex = 83;
-			this.rdnu.TabStop = true;
-			this.rdnu.Text = "Nữ";
-			this.rdnu.UseVisualStyleBackColor = false;
 			// 
 			// PhongKS
 			// 
