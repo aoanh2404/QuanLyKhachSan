@@ -32,7 +32,7 @@ namespace DesignForm.Forms
 			this.dtDisTinct = this.dtdata.DefaultView.ToTable(true, "LOAIPHONG");
 			this.cbLoaiPhong.DataSource = dtDisTinct;
 			this.cbLoaiPhong.DisplayMember = "LOAIPHONG";
-			this.dtCBN= this.dtdata.DefaultView.ToTable(true, "LOAIPHONG");
+			this.dtCBN = this.dtdata.DefaultView.ToTable(true, "LOAIPHONG");
 		}
 
 		private void LoadThem()
@@ -47,6 +47,7 @@ namespace DesignForm.Forms
 					btns.FlatAppearance.BorderColor = ThemColor.SecondaryColor;
 				}
 			}
+
 			foreach (Control btn in this.panel5.Controls)
 			{
 				if (btn.GetType() == typeof(Button))
@@ -67,47 +68,60 @@ namespace DesignForm.Forms
 		private void LoadDataGridPhong()
 		{
 			this.dtdata = new DataTable();
-			string strSQL = "SELECT MAPHONG, LOAIPHONG, GIAPHONG, (CASE WHEN TRANGTHAI = 0 THEN N'Trống' WHEN TRANGTHAI = 1 THEN N'Đã đặt' ELSE N'Đang thuê' END) AS TRANGTHAI FROM PHONG";
-			SqlConnection conn = Database.GetDBConnection();
-			conn.Open();
-			SqlCommand cmd = new SqlCommand(strSQL, conn);
-			this.dtdata.Load(cmd.ExecuteReader());
-			conn.Close();
+			try
+			{
+				string strSQL = "SELECT MAPHONG, LOAIPHONG, GIAPHONG, (CASE WHEN TRANGTHAI = 0 THEN N'Trống' WHEN TRANGTHAI = 1 THEN N'Đã đặt' ELSE N'Đang thuê' END) AS TRANGTHAI FROM PHONG";
+				SqlConnection conn = Database.GetDBConnection();
+				conn.Open();
+				SqlCommand cmd = new SqlCommand(strSQL, conn);
+				this.dtdata.Load(cmd.ExecuteReader());
+				conn.Close();
 
-			DataRow[] dr = null;
-			if (this.tabPhong.SelectedTab == this.tabpDatPhong)
-			{
-				dr = this.dtdata.Select("LOAIPHONG = '" + this.cbLoaiPhong.Text + "'");
-			}
-			else if (this.tabPhong.SelectedTab == this.tabpNhanPhong)
-			{
-				dr = this.dtdata.Select("LOAIPHONG = '" + this.cbLoaiPN.Text + "'");
-			}
-
-			DataTable dtGrid = new DataTable();
-			dtGrid = this.dtdata.Clone();
-			if (dr != null)
-			{
-				foreach (DataRow drG in dr)
+				DataRow[] dr = null;
+				if (this.tabPhong.SelectedTab == this.tabpDatPhong)
 				{
-					dtGrid.Rows.Add(drG.ItemArray);
+					dr = this.dtdata.Select("LOAIPHONG = '" + this.cbLoaiPhong.Text + "'");
 				}
+				else if (this.tabPhong.SelectedTab == this.tabpNhanPhong)
+				{
+					dr = this.dtdata.Select("LOAIPHONG = '" + this.cbLoaiPN.Text + "'");
+				}
+
+				DataTable dtGrid = new DataTable();
+				dtGrid = this.dtdata.Clone();
+				if (dr != null)
+				{
+					foreach (DataRow drG in dr)
+					{
+						dtGrid.Rows.Add(drG.ItemArray);
+					}
+				}
+
+				SetDataGridPhong(dtGrid);
 			}
-
-			SetDataGridPhong(dtGrid);
-
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void LoadDataGridDatPhong()
 		{
-			string strSQL = "SELECT SDT, TENKH, MAPHONG, LOAIPHONG, NGAYDEN, THOIGIANDEN, NGAYDI FROM DATPHONG";
-			DataTable dtPhongDat = new DataTable();
-			SqlConnection conn = Database.GetDBConnection();
-			conn.Open();
-			SqlCommand cmd = new SqlCommand(strSQL, conn);
-			dtPhongDat.Load(cmd.ExecuteReader());
-			conn.Close();
-			SetDataGridDatPhong(dtPhongDat);
+			try
+			{
+				string strSQL = "SELECT SDT, TENKH, MAPHONG, LOAIPHONG, NGAYDEN, THOIGIANDEN, NGAYDI FROM DATPHONG";
+				DataTable dtPhongDat = new DataTable();
+				SqlConnection conn = Database.GetDBConnection();
+				conn.Open();
+				SqlCommand cmd = new SqlCommand(strSQL, conn);
+				dtPhongDat.Load(cmd.ExecuteReader());
+				conn.Close();
+				SetDataGridDatPhong(dtPhongDat);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void SetDataGridPhong(DataTable dtData)
@@ -161,7 +175,7 @@ namespace DesignForm.Forms
 
 		private void cbLoaiPhong_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			DataRow[] dr = this.dtdata.Select("LOAIPHONG = '" +(sender as Control).Text + "'");
+			DataRow[] dr = this.dtdata.Select("LOAIPHONG = '" + (sender as Control).Text + "'");
 
 			DataTable dtGrid = new DataTable();
 			dtGrid = this.dtdata.Clone();
@@ -212,7 +226,7 @@ namespace DesignForm.Forms
 
 				if (!CheckERorr())
 				{
-					MessageBox.Show("Chưa nhập đủ thông tin!");
+					MessageBox.Show("Bạn chưa điền đầy đủ thông tin cần thiết!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return;
 				}
 
@@ -222,12 +236,12 @@ namespace DesignForm.Forms
 
 				if (dr.Length > 0)
 				{
-					MessageBox.Show("Đã được đặt mời chọn phòng khác!");
+					MessageBox.Show(" Phòng đã được đặt mời chọn phòng khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					return;
 				}
 
 
-				DialogResult dlg = MessageBox.Show("Bạn có chắc muốn đặt không!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+				DialogResult dlg = MessageBox.Show("Bạn muốn thực hiện đặt phòng " + this.txtMaPhongD.Text + "?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
 				if (dlg == DialogResult.Yes)
 				{
@@ -253,22 +267,19 @@ namespace DesignForm.Forms
 						conn.Close();
 						LoadDataGridDatPhong();
 						LoadDataGridPhong();
-						MessageBox.Show("Thực hiện thành công!");
+						MessageBox.Show("Đặt phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 						ClearMH();
 					}
 					catch (Exception ex)
 					{
-						Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
-						Console.WriteLine("  Message: {0}", ex.Message);
-
+						MessageBox.Show(ex.Message);
 						try
 						{
 							transaction.Rollback();
 						}
 						catch (Exception ex2)
 						{
-							Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
-							Console.WriteLine("  Message: {0}", ex2.Message);
+							MessageBox.Show(ex2.Message);
 						}
 					}
 				}
@@ -284,6 +295,7 @@ namespace DesignForm.Forms
 			try
 			{
 				ClearError();
+
 				if (this.dataGridView3.RowCount == 0)
 				{
 					return;
@@ -375,14 +387,15 @@ namespace DesignForm.Forms
 			try
 			{
 				ClearError();
+
 				if (string.IsNullOrEmpty(this.txtSdtDat.Text.Trim())
 					|| string.IsNullOrEmpty(this.txtMaPhongD.Text.Trim())
 					|| string.IsNullOrEmpty(this.txtHoTenDat.Text.Trim()))
 				{
-					MessageBox.Show("Không đủ điều kiện dữ liệu để xoá, điều kiện gồm:\n Số điện thoại\n Tên khách hàng\n Mã phòng đã đặt", "Thông báo");
+					MessageBox.Show("Không đủ điều kiện dữ liệu để xoá, điều kiện gồm:\n Số điện thoại\n Tên khách hàng\n Mã phòng đã đặt", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return;
-
 				}
+
 				DialogResult dlg = MessageBox.Show("Bạn có chắc muốn huỷ đặt phòng không!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
 				if (dlg == DialogResult.Yes)
@@ -405,22 +418,19 @@ namespace DesignForm.Forms
 						conn.Close();
 						LoadDataGridDatPhong();
 						LoadDataGridPhong();
-						MessageBox.Show("Thực hiện thành công!");
+						MessageBox.Show("Hủy đặt phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 						ClearMH();
 					}
 					catch (Exception ex)
 					{
-						Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
-						Console.WriteLine("  Message: {0}", ex.Message);
-
+						MessageBox.Show(ex.Message);
 						try
 						{
 							transaction.Rollback();
 						}
 						catch (Exception ex2)
 						{
-							Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
-							Console.WriteLine("  Message: {0}", ex2.Message);
+							MessageBox.Show(ex2.Message);
 						}
 					}
 				}
@@ -439,7 +449,7 @@ namespace DesignForm.Forms
 
 				if (!CheckERorr())
 				{
-					MessageBox.Show("Chưa nhập đủ thông tin!");
+					MessageBox.Show("Bạn chưa điền đây đủ thông tin cần thiết!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return;
 				}
 
@@ -449,12 +459,12 @@ namespace DesignForm.Forms
 
 				if (!this.txtMaPhongD.Text.Trim().Equals(this.dataGridView3.CurrentRow.Cells["MAPHONG"].Value.ToString()) && dr.Length > 0)
 				{
-					MessageBox.Show("Đã được đặt mời chọn phòng khác!");
+					MessageBox.Show("Phòng đã được đặt mời chọn phòng khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return;
 				}
 
 
-				DialogResult dlg = MessageBox.Show("Bạn có chắc muốn đặt không!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+				DialogResult dlg = MessageBox.Show("Bạn muốn thay đổi thông tin đặt phòng?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
 				if (dlg == DialogResult.Yes)
 				{
@@ -489,26 +499,22 @@ namespace DesignForm.Forms
 						conn.Close();
 						LoadDataGridDatPhong();
 						LoadDataGridPhong();
-						MessageBox.Show("Thực hiện thành công!");
+						MessageBox.Show("Thay đổi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 						ClearMH();
 					}
 					catch (Exception ex)
 					{
-						Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
-						Console.WriteLine("  Message: {0}", ex.Message);
-
+						MessageBox.Show(ex.Message);
 						try
 						{
 							transaction.Rollback();
 						}
 						catch (Exception ex2)
 						{
-							Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
-							Console.WriteLine("  Message: {0}", ex2.Message);
+							MessageBox.Show(ex2.Message);
 						}
 					}
 				}
-
 			}
 			catch (Exception)
 			{
@@ -614,6 +620,17 @@ namespace DesignForm.Forms
 				if ((ctrl is TextBox) && string.IsNullOrEmpty(ctrl.Text.Trim()))
 				{
 					ctrlEror.Add(ctrl);
+				}
+
+				if ((ctrl is DateTimePicker))
+				{
+					if ((this.dateNgaydenDat.Value.Day - this.dateNgayDiDat.Value.Day) < 0)
+					{
+						ctrlEror.Add(ctrl);
+					}
+
+					if((this.dateNgaydenDat.Value.Day - this.dateNgayDiDat.Value.Day)==0 && (this.dateNgaydenDat.Value.Hour - this.dateNgayDiDat.Value.Hour)<=0)
+					{ }
 				}
 
 				if ((ctrl is ComboBox) && string.IsNullOrEmpty(ctrl.Text.Trim()))
