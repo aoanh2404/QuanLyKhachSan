@@ -921,16 +921,20 @@ namespace DesignForm.Forms
 					return;
 				}
 
-				DataTable dtData = (this.dataGridView2.DataSource as DataTable);
+				DataTable dtN = (this.dataGridView4.DataSource as DataTable);
 
-				DataRow[] dr = dtData.Select("MAPHONG = '" + this.txtMAPN.Text.ToString().Trim() + "'", string.Empty);
+				DataRow[] drn = dtN.Select("MAPHONG = '" + this.txtMAPN.Text.ToString().Trim() + "'", string.Empty);
 
-				if (dr.Length > 0)
+				if (drn.Length > 0 && drn[0]["TRANGTHAI"].ToString().Equals("Đang thuê"))
 				{
-					sbSQL.Append("DELETE DATPHONG WHERE MAPHONG = @MAPHONG; ");
+					MessageBox.Show(" Phòng đã được thuê mời chọn phòng khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
 				}
-
-				
+				else if (drn.Length > 0 && drn[0]["TRANGTHAI"].ToString().Equals("Đã đặt"))
+				{
+					MessageBox.Show(" Phòng đã được đặt mời chọn phòng khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
+				}
 
 				DialogResult dlg = MessageBox.Show("Bạn muốn thực hiện nhận phòng " + this.txtMaPhongD.Text + "?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -938,6 +942,10 @@ namespace DesignForm.Forms
 				{
 					StringBuilder sbSQL = new StringBuilder();
 					SqlConnection conn = Database.GetDBConnection();
+
+					DataTable dtData = (this.dataGridView2.DataSource as DataTable);
+
+					DataRow[] dr = dtData.Select("MAPHONG = '" + this.txtMAPN.Text.ToString().Trim() + "'", string.Empty);
 
 					if (dr.Length > 0)
 					{
@@ -1109,6 +1117,28 @@ namespace DesignForm.Forms
 			ClearError();
 			ClearMH();
 			LoadDataGridDatPhong();
+		}
+
+		private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			ClearError();
+			this.txtMAPN.Text = this.dataGridView4.CurrentRow.Cells["MAPHONG"].Value.ToString();
+			DataRow[] dr = this.dtdata.Select("MAPHONG = '" + this.txtMAPN.Text + "'");
+			if (dr != null)
+			{
+				this.txtGiaPN.Text = dr[0]["GIAPHONG"].ToString();
+			}
+		}
+
+		private void dataGridView4_KeyDown(object sender, KeyEventArgs e)
+		{
+			ClearError();
+			this.txtMAPN.Text = this.dataGridView4.CurrentRow.Cells["MAPHONG"].Value.ToString();
+			DataRow[] dr = this.dtdata.Select("MAPHONG = '" + this.txtMAPN.Text + "'");
+			if (dr != null)
+			{
+				this.txtGiaPN.Text = dr[0]["GIAPHONG"].ToString();
+			}
 		}
 	}
 }

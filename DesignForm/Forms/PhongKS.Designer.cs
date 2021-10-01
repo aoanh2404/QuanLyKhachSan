@@ -328,6 +328,9 @@
 			this.dataGridView4.Size = new System.Drawing.Size(312, 153);
 			this.dataGridView4.TabIndex = 31;
 			this.dataGridView4.TabStop = false;
+			this.dataGridView4.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellClick);
+			this.dataGridView4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView4_KeyDown);
+			this.dataGridView4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView4_KeyDown);
 			// 
 			// label8
 			// 
