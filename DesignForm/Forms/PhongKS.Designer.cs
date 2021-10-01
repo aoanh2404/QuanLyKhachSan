@@ -40,9 +40,9 @@
 			this.tabpNhanPhong = new System.Windows.Forms.TabPage();
 			this.dataGridView2 = new System.Windows.Forms.DataGridView();
 			this.panel5 = new System.Windows.Forms.Panel();
-			this.button4 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.btnHuyP = new System.Windows.Forms.Button();
+			this.btnResetN = new System.Windows.Forms.Button();
+			this.btnNhanP = new System.Windows.Forms.Button();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.rdNam = new System.Windows.Forms.RadioButton();
@@ -176,46 +176,48 @@
 			this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel5.BackColor = System.Drawing.SystemColors.Menu;
-			this.panel5.Controls.Add(this.button4);
-			this.panel5.Controls.Add(this.button3);
-			this.panel5.Controls.Add(this.button2);
+			this.panel5.Controls.Add(this.btnHuyP);
+			this.panel5.Controls.Add(this.btnResetN);
+			this.panel5.Controls.Add(this.btnNhanP);
 			this.panel5.Location = new System.Drawing.Point(6, 219);
 			this.panel5.Name = "panel5";
 			this.panel5.Size = new System.Drawing.Size(831, 36);
 			this.panel5.TabIndex = 76;
 			// 
-			// button4
+			// btnHuyP
 			// 
-			this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button4.Location = new System.Drawing.Point(524, 4);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(88, 28);
-			this.button4.TabIndex = 2;
-			this.button4.Text = "Huỷ";
-			this.button4.UseVisualStyleBackColor = true;
+			this.btnHuyP.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnHuyP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnHuyP.Location = new System.Drawing.Point(524, 4);
+			this.btnHuyP.Name = "btnHuyP";
+			this.btnHuyP.Size = new System.Drawing.Size(88, 28);
+			this.btnHuyP.TabIndex = 2;
+			this.btnHuyP.Text = "Huỷ";
+			this.btnHuyP.UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// btnResetN
 			// 
-			this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button3.Location = new System.Drawing.Point(361, 4);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(88, 28);
-			this.button3.TabIndex = 1;
-			this.button3.Text = "Sửa";
-			this.button3.UseVisualStyleBackColor = true;
+			this.btnResetN.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnResetN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnResetN.Location = new System.Drawing.Point(361, 4);
+			this.btnResetN.Name = "btnResetN";
+			this.btnResetN.Size = new System.Drawing.Size(88, 28);
+			this.btnResetN.TabIndex = 1;
+			this.btnResetN.Text = "Reset";
+			this.btnResetN.UseVisualStyleBackColor = true;
+			this.btnResetN.Click += new System.EventHandler(this.btnResetN_Click);
 			// 
-			// button2
+			// btnNhanP
 			// 
-			this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button2.Location = new System.Drawing.Point(198, 4);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(88, 28);
-			this.button2.TabIndex = 0;
-			this.button2.Text = "Nhận";
-			this.button2.UseVisualStyleBackColor = true;
+			this.btnNhanP.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnNhanP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnNhanP.Location = new System.Drawing.Point(198, 4);
+			this.btnNhanP.Name = "btnNhanP";
+			this.btnNhanP.Size = new System.Drawing.Size(88, 28);
+			this.btnNhanP.TabIndex = 0;
+			this.btnNhanP.Text = "Nhận";
+			this.btnNhanP.UseVisualStyleBackColor = true;
+			this.btnNhanP.Click += new System.EventHandler(this.btnNhanP_Click);
 			// 
 			// panel4
 			// 
@@ -232,6 +234,7 @@
 			// 
 			// panel2
 			// 
+			this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panel2.Controls.Add(this.rdNam);
 			this.panel2.Controls.Add(this.rdnu);
@@ -316,13 +319,13 @@
 			this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView4.EnableHeadersVisualStyles = false;
-			this.dataGridView4.Location = new System.Drawing.Point(277, 3);
+			this.dataGridView4.Location = new System.Drawing.Point(274, 3);
 			this.dataGridView4.MultiSelect = false;
 			this.dataGridView4.Name = "dataGridView4";
 			this.dataGridView4.ReadOnly = true;
 			this.dataGridView4.RowHeadersVisible = false;
 			this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView4.Size = new System.Drawing.Size(324, 153);
+			this.dataGridView4.Size = new System.Drawing.Size(312, 153);
 			this.dataGridView4.TabIndex = 31;
 			this.dataGridView4.TabStop = false;
 			// 
@@ -331,7 +334,7 @@
 			this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label8.BackColor = System.Drawing.Color.Black;
 			this.label8.ForeColor = System.Drawing.Color.White;
-			this.label8.Location = new System.Drawing.Point(607, 106);
+			this.label8.Location = new System.Drawing.Point(588, 106);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(88, 26);
 			this.label8.TabIndex = 16;
@@ -343,7 +346,7 @@
 			this.cbLoaiPN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbLoaiPN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbLoaiPN.FormattingEnabled = true;
-			this.cbLoaiPN.Location = new System.Drawing.Point(695, 106);
+			this.cbLoaiPN.Location = new System.Drawing.Point(676, 106);
 			this.cbLoaiPN.Name = "cbLoaiPN";
 			this.cbLoaiPN.Size = new System.Drawing.Size(121, 26);
 			this.cbLoaiPN.TabIndex = 17;
@@ -354,11 +357,12 @@
 			this.dateNgaydiN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.dateNgaydiN.CustomFormat = "yyyy/MM/dd";
 			this.dateNgaydiN.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateNgaydiN.Location = new System.Drawing.Point(695, 81);
+			this.dateNgaydiN.Location = new System.Drawing.Point(676, 81);
 			this.dateNgaydiN.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
 			this.dateNgaydiN.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			this.dateNgaydiN.Name = "dateNgaydiN";
-			this.dateNgaydiN.Size = new System.Drawing.Size(111, 24);
+			this.dateNgaydiN.ShowCheckBox = true;
+			this.dateNgaydiN.Size = new System.Drawing.Size(130, 24);
 			this.dateNgaydiN.TabIndex = 15;
 			// 
 			// label11
@@ -367,7 +371,7 @@
 			this.label11.AutoSize = true;
 			this.label11.BackColor = System.Drawing.SystemColors.ButtonFace;
 			this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-			this.label11.Location = new System.Drawing.Point(607, 2);
+			this.label11.Location = new System.Drawing.Point(588, 2);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(181, 24);
 			this.label11.TabIndex = 9;
@@ -389,7 +393,7 @@
 			this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label12.BackColor = System.Drawing.Color.Black;
 			this.label12.ForeColor = System.Drawing.Color.White;
-			this.label12.Location = new System.Drawing.Point(607, 81);
+			this.label12.Location = new System.Drawing.Point(588, 81);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(88, 24);
 			this.label12.TabIndex = 14;
@@ -401,11 +405,11 @@
 			this.dateNgaydenN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.dateNgaydenN.CustomFormat = "yyyy/MM/dd";
 			this.dateNgaydenN.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateNgaydenN.Location = new System.Drawing.Point(695, 55);
+			this.dateNgaydenN.Location = new System.Drawing.Point(676, 55);
 			this.dateNgaydenN.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
 			this.dateNgaydenN.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			this.dateNgaydenN.Name = "dateNgaydenN";
-			this.dateNgaydenN.Size = new System.Drawing.Size(111, 24);
+			this.dateNgaydenN.Size = new System.Drawing.Size(109, 24);
 			this.dateNgaydenN.TabIndex = 13;
 			// 
 			// label10
@@ -413,7 +417,7 @@
 			this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label10.BackColor = System.Drawing.Color.Black;
 			this.label10.ForeColor = System.Drawing.Color.White;
-			this.label10.Location = new System.Drawing.Point(607, 55);
+			this.label10.Location = new System.Drawing.Point(588, 55);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(88, 24);
 			this.label10.TabIndex = 12;
@@ -425,7 +429,7 @@
 			this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label18.BackColor = System.Drawing.Color.Black;
 			this.label18.ForeColor = System.Drawing.Color.White;
-			this.label18.Location = new System.Drawing.Point(607, 133);
+			this.label18.Location = new System.Drawing.Point(588, 133);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(88, 24);
 			this.label18.TabIndex = 18;
@@ -435,7 +439,7 @@
 			// txtGiaPN
 			// 
 			this.txtGiaPN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtGiaPN.Location = new System.Drawing.Point(695, 133);
+			this.txtGiaPN.Location = new System.Drawing.Point(676, 133);
 			this.txtGiaPN.Name = "txtGiaPN";
 			this.txtGiaPN.Size = new System.Drawing.Size(120, 24);
 			this.txtGiaPN.TabIndex = 19;
@@ -443,7 +447,7 @@
 			// txtMAPN
 			// 
 			this.txtMAPN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtMAPN.Location = new System.Drawing.Point(695, 29);
+			this.txtMAPN.Location = new System.Drawing.Point(676, 29);
 			this.txtMAPN.Name = "txtMAPN";
 			this.txtMAPN.Size = new System.Drawing.Size(121, 24);
 			this.txtMAPN.TabIndex = 11;
@@ -453,7 +457,7 @@
 			this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label17.BackColor = System.Drawing.Color.Black;
 			this.label17.ForeColor = System.Drawing.Color.White;
-			this.label17.Location = new System.Drawing.Point(607, 29);
+			this.label17.Location = new System.Drawing.Point(588, 29);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(88, 24);
 			this.label17.TabIndex = 10;
@@ -502,6 +506,7 @@
 			this.txtMAKH.Name = "txtMAKH";
 			this.txtMAKH.Size = new System.Drawing.Size(175, 24);
 			this.txtMAKH.TabIndex = 2;
+			this.txtMAKH.Validating += new System.ComponentModel.CancelEventHandler(this.txtMAKH_Validating);
 			// 
 			// label15
 			// 
@@ -558,6 +563,7 @@
 			this.txtSDTN.Name = "txtSDTN";
 			this.txtSDTN.Size = new System.Drawing.Size(107, 24);
 			this.txtSDTN.TabIndex = 1;
+			this.txtSDTN.TextChanged += new System.EventHandler(this.txtSDTN_TextChanged);
 			// 
 			// label13
 			// 
@@ -734,7 +740,7 @@
 			// 
 			this.dateGioDat.CustomFormat = "HH:mm";
 			this.dateGioDat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateGioDat.Location = new System.Drawing.Point(93, 110);
+			this.dateGioDat.Location = new System.Drawing.Point(93, 84);
 			this.dateGioDat.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
 			this.dateGioDat.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			this.dateGioDat.Name = "dateGioDat";
@@ -746,18 +752,19 @@
 			// 
 			this.dateNgayDiDat.CustomFormat = "yyyy/MM/dd HH:mm";
 			this.dateNgayDiDat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateNgayDiDat.Location = new System.Drawing.Point(93, 84);
+			this.dateNgayDiDat.Location = new System.Drawing.Point(93, 110);
 			this.dateNgayDiDat.MaxDate = new System.DateTime(2079, 12, 31, 0, 0, 0, 0);
 			this.dateNgayDiDat.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			this.dateNgayDiDat.Name = "dateNgayDiDat";
-			this.dateNgayDiDat.Size = new System.Drawing.Size(149, 24);
+			this.dateNgayDiDat.ShowCheckBox = true;
+			this.dateNgayDiDat.Size = new System.Drawing.Size(173, 24);
 			this.dateNgayDiDat.TabIndex = 23;
 			// 
 			// label2
 			// 
 			this.label2.BackColor = System.Drawing.Color.Black;
 			this.label2.ForeColor = System.Drawing.Color.White;
-			this.label2.Location = new System.Drawing.Point(5, 110);
+			this.label2.Location = new System.Drawing.Point(5, 84);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(88, 24);
 			this.label2.TabIndex = 24;
@@ -768,7 +775,7 @@
 			// 
 			this.label3.BackColor = System.Drawing.Color.Black;
 			this.label3.ForeColor = System.Drawing.Color.White;
-			this.label3.Location = new System.Drawing.Point(5, 84);
+			this.label3.Location = new System.Drawing.Point(5, 110);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(88, 24);
 			this.label3.TabIndex = 22;
@@ -958,9 +965,9 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.TabPage tabpNhanPhong;
 		private System.Windows.Forms.Panel panel5;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button btnHuyP;
+		private System.Windows.Forms.Button btnResetN;
+		private System.Windows.Forms.Button btnNhanP;
 		private System.Windows.Forms.Panel panel4;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Label label8;

@@ -41,7 +41,7 @@ namespace DesignForm.Forms
 			}
 
 			this.txtTenTb.AutoCompleteCustomSource = col;
-			this.txtTenTb.AutoCompleteMode = AutoCompleteMode.None;
+			this.txtTenTb.AutoCompleteMode = AutoCompleteMode.Suggest;
 			SetDefaultFocus();
 			SaveMH();
 		}
@@ -196,10 +196,11 @@ namespace DesignForm.Forms
 
 		private void txtMaTb_TextChanged(object sender, EventArgs e)
 		{
-			if (this.chkSearch.Checked && this.rdMatb.Checked)
+			if (this.txtMaTb.Focused)
 			{
 				if (this.txtMaTb.Text.Trim().Equals(string.Empty))
 				{
+					SetDataGrid(this.dtdata);
 					return;
 				}
 
@@ -221,53 +222,6 @@ namespace DesignForm.Forms
 				foreach (Control ctrl in this.panel4.Controls)
 				{
 					if ((ctrl is TextBox) && !ctrl.Equals(this.txtMaTb))
-					{
-						(ctrl as TextBox).Text = string.Empty;
-					}
-
-					if ((ctrl is ComboBox))
-					{
-						(ctrl as ComboBox).SelectedIndex = -1;
-					}
-
-					if (ctrl is DateTimePicker)
-					{
-						(ctrl as DateTimePicker).Value = DateTime.Now;
-					}
-				}
-			}
-		}
-
-		private void txtTenTb_Validating(object sender, CancelEventArgs e)
-		{
-			if (this.chkSearch.Checked && this.rdTentb.Checked)
-			{
-				SetDataGrid(this.dtdata.Clone());
-
-				DataTable dtGird = new DataTable();
-
-				dtGird = this.dtdata.Clone();
-
-				DataRow[] dr1 = new DataRow[] { };
-
-				dr1 = this.dtdata.Select("TENTV LIKE'" + this.txtTenTb.Text.Trim() + "%'", string.Empty);
-
-				foreach (DataRow dr in dr1)
-				{
-					dtGird.Rows.Add(dr.ItemArray);
-				}
-
-				SetDataGrid(dtGird);
-
-				if (this.chkSearch.Checked && this.rdTentb.Checked)
-				{
-					this.rdMatb.Checked = true;
-					this.chkSearch.Checked = false;
-				}
-
-				foreach (Control ctrl in this.panel4.Controls)
-				{
-					if ((ctrl is TextBox) && !ctrl.Name.Equals(this.txtTenTb.Name))
 					{
 						(ctrl as TextBox).Text = string.Empty;
 					}
@@ -402,35 +356,13 @@ namespace DesignForm.Forms
 			}
 		}
 
-		private void chkSearch_CheckedChanged(object sender, EventArgs e)
-		{
-			try
-			{
-				if (this.chkSearch.Checked)
-				{
-					this.rdMatb.Checked = true;
-					this.panel1.Enabled = true;
-					this.txtTenTb.AutoCompleteMode = AutoCompleteMode.Suggest;
-				}
-				else
-				{
-					this.rdMatb.Checked = true;
-					this.panel1.Enabled = false;
-					this.txtTenTb.AutoCompleteMode = AutoCompleteMode.None;
-				}
-			}
-			catch (Exception)
-			{
-				throw;
-			}
-		}
-
 		private void txtMaP_TextChanged(object sender, EventArgs e)
 		{
-			if (this.chkSearch.Checked && this.rdMaphong.Checked)
+			if (this.txtMaP.Focused)
 			{
 				if (this.txtMaP.Text.Trim().Equals(string.Empty))
 				{
+					SetDataGrid(this.dtdata);
 					return;
 				}
 
@@ -578,40 +510,6 @@ namespace DesignForm.Forms
 					this.errorProvider1.SetError((ctrl as Control), string.Empty);
 				}
 			}
-		}
-
-		private void txtMaP_Validated(object sender, EventArgs e)
-		{
-			this.errorProvider1.SetError(this.txtMaP, string.Empty);
-			if (this.chkSearch.Checked)
-			{
-				this.rdMatb.Checked = true;
-				this.chkSearch.Checked = false;
-			}
-		}
-
-		private void txtMaTb_Validated(object sender, EventArgs e)
-		{
-			this.errorProvider1.SetError(this.txtMaTb, string.Empty);
-			if (this.chkSearch.Checked)
-			{
-				this.rdMatb.Checked = true;
-				this.chkSearch.Checked = false;
-			}
-		}
-
-		private void rdMatb_Click(object sender, EventArgs e)
-		{
-			if (this.chkSearch.Checked && this.rdTentb.Checked)
-			{
-				this.txtTenTb.AutoCompleteMode = AutoCompleteMode.Suggest;
-			}
-			else
-			{
-				this.txtTenTb.AutoCompleteMode = AutoCompleteMode.None;
-			}
-			ClearMH();
-			SetDataGrid(this.dtdata);
 		}
 
 		private void btnThem_Click(object sender, EventArgs e)
@@ -808,6 +706,48 @@ namespace DesignForm.Forms
 			{
 				throw;
 			}
+		}
+
+		private void txtTenTb_TextChanged(object sender, EventArgs e)
+		{
+			if (this.txtTenTb.Focused)
+			{
+				SetDataGrid(this.dtdata.Clone());
+
+				DataTable dtGird = new DataTable();
+
+				dtGird = this.dtdata.Clone();
+
+				DataRow[] dr1 = new DataRow[] { };
+
+				dr1 = this.dtdata.Select("TENTV LIKE'" + this.txtTenTb.Text.Trim() + "%'", string.Empty);
+
+				foreach (DataRow dr in dr1)
+				{
+					dtGird.Rows.Add(dr.ItemArray);
+				}
+
+				SetDataGrid(dtGird);
+
+				foreach (Control ctrl in this.panel4.Controls)
+				{
+					if ((ctrl is TextBox) && !ctrl.Name.Equals(this.txtTenTb.Name))
+					{
+						(ctrl as TextBox).Text = string.Empty;
+					}
+
+					if ((ctrl is ComboBox))
+					{
+						(ctrl as ComboBox).SelectedIndex = -1;
+					}
+
+					if (ctrl is DateTimePicker)
+					{
+						(ctrl as DateTimePicker).Value = DateTime.Now;
+					}
+				}
+			}
+
 		}
 	}
 }
