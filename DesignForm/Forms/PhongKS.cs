@@ -793,6 +793,7 @@ namespace DesignForm.Forms
 			}
 			try
 			{
+				ClearMH();
 				this.txtSDTN.Text = this.dataGridView2.CurrentRow.Cells["SDT"].Value.ToString();
 				this.txtTenKH.Text = this.dataGridView2.CurrentRow.Cells["TENKH"].Value.ToString();
 				this.dateNgaydenN.Value = Convert.ToDateTime(this.dataGridView2.CurrentRow.Cells["NGAYDEN"].Value.ToString());
@@ -855,6 +856,7 @@ namespace DesignForm.Forms
 			}
 			try
 			{
+				ClearMH();
 				this.txtSDTN.Text = this.dataGridView2.CurrentRow.Cells["SDT"].Value.ToString();
 				this.txtTenKH.Text = this.dataGridView2.CurrentRow.Cells["TENKH"].Value.ToString();
 				this.dateNgaydenN.Value = Convert.ToDateTime(this.dataGridView2.CurrentRow.Cells["NGAYDEN"].Value.ToString());
