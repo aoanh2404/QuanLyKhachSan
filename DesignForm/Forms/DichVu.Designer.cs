@@ -90,7 +90,7 @@
 			this.panel5.Location = new System.Drawing.Point(5, 284);
 			this.panel5.Name = "panel5";
 			this.panel5.Size = new System.Drawing.Size(838, 36);
-			this.panel5.TabIndex = 79;
+			this.panel5.TabIndex = 1;
 			// 
 			// btnXoa
 			// 
@@ -100,6 +100,7 @@
 			this.btnXoa.Name = "btnXoa";
 			this.btnXoa.Size = new System.Drawing.Size(88, 28);
 			this.btnXoa.TabIndex = 2;
+			this.btnXoa.TabStop = false;
 			this.btnXoa.Text = "Xoá";
 			this.btnXoa.UseVisualStyleBackColor = true;
 			// 
@@ -111,6 +112,7 @@
 			this.btnSua.Name = "btnSua";
 			this.btnSua.Size = new System.Drawing.Size(88, 28);
 			this.btnSua.TabIndex = 1;
+			this.btnSua.TabStop = false;
 			this.btnSua.Text = "Sửa";
 			this.btnSua.UseVisualStyleBackColor = true;
 			// 
@@ -122,6 +124,7 @@
 			this.btnThem.Name = "btnThem";
 			this.btnThem.Size = new System.Drawing.Size(88, 28);
 			this.btnThem.TabIndex = 0;
+			this.btnThem.TabStop = false;
 			this.btnThem.Text = "Thêm";
 			this.btnThem.UseVisualStyleBackColor = true;
 			// 
@@ -158,7 +161,7 @@
 			this.dtgSoucre.RowHeadersVisible = false;
 			this.dtgSoucre.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dtgSoucre.Size = new System.Drawing.Size(838, 69);
-			this.dtgSoucre.TabIndex = 1;
+			this.dtgSoucre.TabIndex = 2;
 			this.dtgSoucre.TabStop = false;
 			// 
 			// panel4
@@ -199,7 +202,7 @@
 			this.panel2.Location = new System.Drawing.Point(2, 47);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(832, 223);
-			this.panel2.TabIndex = 84;
+			this.panel2.TabIndex = 0;
 			// 
 			// dtgDV
 			// 
@@ -234,6 +237,9 @@
 			this.dtgDV.Size = new System.Drawing.Size(536, 161);
 			this.dtgDV.TabIndex = 16;
 			this.dtgDV.TabStop = false;
+			this.dtgDV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDV_CellClick);
+			this.dtgDV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgDV_KeyDown);
+			this.dtgDV.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dtgDV_KeyDown);
 			// 
 			// btnTra
 			// 
@@ -243,6 +249,7 @@
 			this.btnTra.Name = "btnTra";
 			this.btnTra.Size = new System.Drawing.Size(88, 28);
 			this.btnTra.TabIndex = 15;
+			this.btnTra.TabStop = false;
 			this.btnTra.Text = "Trả";
 			this.btnTra.UseVisualStyleBackColor = true;
 			// 
@@ -294,8 +301,11 @@
 			// 
 			this.txtTong.Location = new System.Drawing.Point(96, 191);
 			this.txtTong.Name = "txtTong";
-			this.txtTong.Size = new System.Drawing.Size(189, 24);
+			this.txtTong.Size = new System.Drawing.Size(110, 24);
 			this.txtTong.TabIndex = 14;
+			this.txtTong.Text = "0";
+			this.txtTong.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtTong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoluong_KeyPress);
 			// 
 			// label2
 			// 
@@ -354,8 +364,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtGia.Location = new System.Drawing.Point(96, 110);
 			this.txtGia.Name = "txtGia";
-			this.txtGia.Size = new System.Drawing.Size(189, 24);
+			this.txtGia.Size = new System.Drawing.Size(110, 24);
 			this.txtGia.TabIndex = 8;
+			this.txtGia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoluong_KeyPress);
 			// 
 			// label9
 			// 
@@ -373,9 +385,13 @@
 			this.txtSoluong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtSoluong.Location = new System.Drawing.Point(96, 83);
+			this.txtSoluong.MaxLength = 5;
 			this.txtSoluong.Name = "txtSoluong";
-			this.txtSoluong.Size = new System.Drawing.Size(189, 24);
+			this.txtSoluong.Size = new System.Drawing.Size(110, 24);
 			this.txtSoluong.TabIndex = 6;
+			this.txtSoluong.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtSoluong.TextChanged += new System.EventHandler(this.txtSoluong_TextChanged);
+			this.txtSoluong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoluong_KeyPress);
 			// 
 			// label14
 			// 
@@ -433,10 +449,14 @@
 			// txtTongCong
 			// 
 			this.txtTongCong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtTongCong.Enabled = false;
 			this.txtTongCong.Location = new System.Drawing.Point(641, 7);
 			this.txtTongCong.Name = "txtTongCong";
-			this.txtTongCong.Size = new System.Drawing.Size(189, 24);
-			this.txtTongCong.TabIndex = 16;
+			this.txtTongCong.Size = new System.Drawing.Size(158, 24);
+			this.txtTongCong.TabIndex = 3;
+			this.txtTongCong.TabStop = false;
+			this.txtTongCong.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtTongCong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoluong_KeyPress);
 			// 
 			// label5
 			// 
@@ -446,12 +466,14 @@
 			this.label5.Location = new System.Drawing.Point(553, 7);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(88, 24);
-			this.label5.TabIndex = 15;
+			this.label5.TabIndex = 2;
 			this.label5.Text = "Tổng tiền";
 			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// txtMaPhong
 			// 
+			this.txtMaPhong.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+			this.txtMaPhong.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
 			this.txtMaPhong.Location = new System.Drawing.Point(96, 7);
 			this.txtMaPhong.Name = "txtMaPhong";
 			this.txtMaPhong.Size = new System.Drawing.Size(111, 24);
@@ -464,7 +486,7 @@
 			this.label13.Location = new System.Drawing.Point(8, 7);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(88, 24);
-			this.label13.TabIndex = 0;
+			this.label13.TabIndex = 1;
 			this.label13.Text = "Mã phòng";
 			this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 

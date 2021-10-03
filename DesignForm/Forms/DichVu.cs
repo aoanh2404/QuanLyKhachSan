@@ -23,6 +23,25 @@ namespace DesignForm.Forms
 		{
 			LoadThem();
 			LoadDataGrid();
+			this.comboBox1.SelectedIndex = 1;
+			DataTable dtMAPHONG = new DataTable();
+			string strSQL = "SELECT * FROM CTDATPHONG";
+			DataTable dtdata = new DataTable();
+			SqlConnection conn = Database.GetDBConnection();
+			conn.Open();
+			SqlCommand cmd = new SqlCommand(strSQL, conn);
+			dtMAPHONG.Load(cmd.ExecuteReader());
+			conn.Close();
+
+			AutoCompleteStringCollection col = new AutoCompleteStringCollection();
+
+			foreach (DataRow dr in dtMAPHONG.Rows)
+			{
+				col.Add(dr[0].ToString());
+			}
+
+			this.txtMaPhong.AutoCompleteCustomSource = col;
+
 		}
 
 		private void LoadThem()
@@ -56,7 +75,6 @@ namespace DesignForm.Forms
 			this.dtSoucre = dtdata;
 		}
 
-
 		private void SetDataGrid(DataTable dtData)
 		{
 			this.dtgDV.DataSource = dtData;
@@ -64,6 +82,7 @@ namespace DesignForm.Forms
 			this.dtgDV.Columns["LOAIDV"].Visible = false;
 			this.dtgDV.Columns["SOLUONG"].HeaderText = "Số lượng";
 			this.dtgDV.Columns["GIA1DONVI"].HeaderText = "Giá";
+			this.dtgDV.Columns["GIA1DONVI"].DefaultCellStyle.Format = "###,##0";
 		}
 
 		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,6 +107,90 @@ namespace DesignForm.Forms
 
 				throw;
 			}
+		}
+
+		private void dtgDV_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			try
+			{
+				ClearMH();
+				this.txtTenDv.Text = this.dtgDV.CurrentRow.Cells["TENDV"].Value.ToString();
+				this.txtGia.Text = Convert.ToInt32(this.dtgDV.CurrentRow.Cells["GIA1DONVI"].Value.ToString()).ToString("###,##0");
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		private void dtgDV_KeyDown(object sender, KeyEventArgs e)
+		{
+			try
+			{
+				ClearMH();
+				this.txtTenDv.Text = this.dtgDV.CurrentRow.Cells["TENDV"].Value.ToString();
+				this.txtGia.Text = Convert.ToInt32(this.dtgDV.CurrentRow.Cells["GIA1DONVI"].Value.ToString()).ToString("###,##0");
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		private void txtSoluong_TextChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				if (!string.IsNullOrEmpty(this.txtSoluong.Text.Trim()))
+				{
+					this.txtTong.Text = (Convert.ToInt32(this.txtSoluong.Text.Trim().Replace(",",string.Empty)) * Convert.ToInt32(this.txtGia.Text.Trim().Replace(",", string.Empty))).ToString("###,##0");
+				}
+				else
+				{
+					this.txtTong.Text = "0";
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		private void txtSoluong_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			try
+			{
+				if (!(e.KeyChar >= '0' && e.KeyChar <= '9' || e.KeyChar == (char)8))
+				{
+					e.Handled = true;
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		private void ClearMH()
+		{
+			foreach (Control ctrl in this.panel2.Controls)
+			{
+				if ((ctrl is TextBox))
+				{
+					(ctrl as TextBox).Text = string.Empty;
+				}
+
+				//if ((ctrl is ComboBox))
+				//{
+				//	(ctrl as ComboBox).SelectedIndex = 0;
+				//}
+
+				if (ctrl is DateTimePicker)
+				{
+					(ctrl as DateTimePicker).Value = DateTime.Now;
+				}
+			}
+
 		}
 	}
 }

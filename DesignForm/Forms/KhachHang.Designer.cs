@@ -32,13 +32,13 @@
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KhachHang));
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.txtHoten = new System.Windows.Forms.TextBox();
+			this.txtDiachi = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
-			this.txtUserName = new System.Windows.Forms.TextBox();
+			this.txttenKh = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.txtIDUser = new System.Windows.Forms.TextBox();
+			this.txtMaKH = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.txtNamSinh = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.rdNam = new System.Windows.Forms.RadioButton();
 			this.rdnu = new System.Windows.Forms.RadioButton();
@@ -48,7 +48,7 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.txtSDT = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -90,13 +90,16 @@
 			this.dataGridView1.Size = new System.Drawing.Size(793, 151);
 			this.dataGridView1.TabIndex = 21;
 			this.dataGridView1.TabStop = false;
+			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+			this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+			this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
 			// 
-			// txtHoten
+			// txtDiachi
 			// 
-			this.txtHoten.Location = new System.Drawing.Point(94, 78);
-			this.txtHoten.Name = "txtHoten";
-			this.txtHoten.Size = new System.Drawing.Size(313, 24);
-			this.txtHoten.TabIndex = 17;
+			this.txtDiachi.Location = new System.Drawing.Point(94, 78);
+			this.txtDiachi.Name = "txtDiachi";
+			this.txtDiachi.Size = new System.Drawing.Size(313, 24);
+			this.txtDiachi.TabIndex = 17;
 			// 
 			// label4
 			// 
@@ -109,12 +112,12 @@
 			this.label4.Text = "Địa chỉ";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// txtUserName
+			// txttenKh
 			// 
-			this.txtUserName.Location = new System.Drawing.Point(94, 45);
-			this.txtUserName.Name = "txtUserName";
-			this.txtUserName.Size = new System.Drawing.Size(189, 24);
-			this.txtUserName.TabIndex = 18;
+			this.txttenKh.Location = new System.Drawing.Point(94, 45);
+			this.txttenKh.Name = "txttenKh";
+			this.txttenKh.Size = new System.Drawing.Size(189, 24);
+			this.txttenKh.TabIndex = 18;
 			// 
 			// label2
 			// 
@@ -127,12 +130,12 @@
 			this.label2.Text = "Họ tên";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// txtIDUser
+			// txtMaKH
 			// 
-			this.txtIDUser.Location = new System.Drawing.Point(94, 12);
-			this.txtIDUser.Name = "txtIDUser";
-			this.txtIDUser.Size = new System.Drawing.Size(189, 24);
-			this.txtIDUser.TabIndex = 13;
+			this.txtMaKH.Location = new System.Drawing.Point(94, 12);
+			this.txtMaKH.Name = "txtMaKH";
+			this.txtMaKH.Size = new System.Drawing.Size(189, 24);
+			this.txtMaKH.TabIndex = 13;
 			// 
 			// label1
 			// 
@@ -145,13 +148,13 @@
 			this.label1.Text = "Mã K.Hàng";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// textBox1
+			// txtNamSinh
 			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.Location = new System.Drawing.Point(573, 12);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(70, 24);
-			this.textBox1.TabIndex = 79;
+			this.txtNamSinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtNamSinh.Location = new System.Drawing.Point(573, 12);
+			this.txtNamSinh.Name = "txtNamSinh";
+			this.txtNamSinh.Size = new System.Drawing.Size(70, 24);
+			this.txtNamSinh.TabIndex = 79;
 			// 
 			// label3
 			// 
@@ -265,13 +268,13 @@
 			this.button4.Text = "Sửa";
 			this.button4.UseVisualStyleBackColor = true;
 			// 
-			// textBox2
+			// txtSDT
 			// 
-			this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox2.Location = new System.Drawing.Point(573, 78);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(189, 24);
-			this.textBox2.TabIndex = 85;
+			this.txtSDT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtSDT.Location = new System.Drawing.Point(573, 78);
+			this.txtSDT.Name = "txtSDT";
+			this.txtSDT.Size = new System.Drawing.Size(189, 24);
+			this.txtSDT.TabIndex = 85;
 			// 
 			// label6
 			// 
@@ -300,26 +303,26 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(799, 301);
-			this.Controls.Add(this.textBox2);
+			this.Controls.Add(this.txtSDT);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.rdNam);
 			this.Controls.Add(this.rdnu);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.txtNamSinh);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.dataGridView1);
-			this.Controls.Add(this.txtHoten);
+			this.Controls.Add(this.txtDiachi);
 			this.Controls.Add(this.label4);
-			this.Controls.Add(this.txtUserName);
+			this.Controls.Add(this.txttenKh);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.txtIDUser);
+			this.Controls.Add(this.txtMaKH);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.panel2);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "KhachHang";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Khách Hàng";
@@ -333,13 +336,13 @@
 
 		#endregion
 		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.TextBox txtHoten;
+		private System.Windows.Forms.TextBox txtDiachi;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox txtUserName;
+		private System.Windows.Forms.TextBox txttenKh;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox txtIDUser;
+		private System.Windows.Forms.TextBox txtMaKH;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox txtNamSinh;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.RadioButton rdNam;
 		private System.Windows.Forms.RadioButton rdnu;
@@ -349,7 +352,7 @@
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox txtSDT;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Panel panel2;
 	}
