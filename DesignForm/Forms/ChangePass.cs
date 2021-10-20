@@ -23,7 +23,7 @@ namespace DesignForm
             InitializeComponent();
             this.strID = param[0].ToString();
             this.strPassOld = param[1].ToString(); 
-        }
+        } 
 
         private void ChangePass_Load(object sender, EventArgs e)
         {
