@@ -18,7 +18,7 @@ namespace DesignForm
         public int ischange
         { get; set; }
 
-        public ChangePass(object[] param)
+        public ChangePass(object[] param) 
         {
             InitializeComponent();
             this.strID = param[0].ToString();
