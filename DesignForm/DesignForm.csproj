@@ -77,6 +77,12 @@
     <Compile Include="Forms\ChangePass.designer.cs">
       <DependentUpon>ChangePass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ChangePhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangePhong.Designer.cs">
+      <DependentUpon>ChangePhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DichVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangePass.resx">
       <DependentUpon>ChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangePhong.resx">
+      <DependentUpon>ChangePhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DichVu.resx">
       <DependentUpon>DichVu.cs</DependentUpon>

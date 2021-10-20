@@ -933,8 +933,23 @@ namespace DesignForm.Forms
 					return;
 				}
 				else if (drn.Length > 0 && drn[0]["TRANGTHAI"].ToString().Equals("Đã đặt"))
-				{
-					MessageBox.Show(" Phòng đã được đặt mời chọn phòng khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				{ 
+
+					DialogResult dlgchangerom = MessageBox.Show("Phòng " + this.txtMAPN.Text + " đã được đặt trước.\nBạn có muốn đổi sang đặt phòng khác không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+					if (dlgchangerom == DialogResult.Yes)
+					{
+						try
+						{
+							ChangePhong frmSearch = new ChangePhong();
+							frmSearch.FormClosing += frmSearch_FormClosing;
+							frmSearch.ShowDialog();
+						}
+						catch (Exception)
+						{
+							throw;
+						}
+
+					}
 					return;
 				}
 
@@ -1140,6 +1155,20 @@ namespace DesignForm.Forms
 			if (dr != null)
 			{
 				this.txtGiaPN.Text = dr[0]["GIAPHONG"].ToString();
+			}
+		}
+
+		private void frmSearch_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			try
+			{
+				string strMaP = string.Empty;
+				strMaP = (sender as ChangePhong).strMAP;
+				ClearError();
+			}
+			catch (Exception)
+			{
+				throw;
 			}
 		}
 	}
