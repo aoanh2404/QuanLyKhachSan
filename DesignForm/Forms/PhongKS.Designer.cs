@@ -117,6 +117,7 @@
 			// errorProvider1
 			// 
 			this.errorProvider1.ContainerControl = this;
+			this.errorProvider1.RightToLeft = true;
 			// 
 			// tabpNhanPhong
 			// 
@@ -941,8 +942,6 @@
 		}
 
 		#endregion
-
-		private System.Windows.Forms.ErrorProvider errorProvider1;
 		private System.Windows.Forms.TabControl tabPhong;
 		private System.Windows.Forms.TabPage tabpDatPhong;
 		private System.Windows.Forms.DataGridView dataGridView3;
@@ -1003,5 +1002,6 @@
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.RadioButton rdNam;
 		private System.Windows.Forms.RadioButton rdnu;
+		private System.Windows.Forms.ErrorProvider errorProvider1;
 	}
 }

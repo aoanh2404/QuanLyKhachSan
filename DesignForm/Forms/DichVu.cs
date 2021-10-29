@@ -23,6 +23,7 @@ namespace DesignForm.Forms
 		{
 			LoadThem();
 			LoadDataGrid();
+			LoadDataGridDV();
 			this.comboBox1.SelectedIndex = 1;
 			DataTable dtMAPHONG = new DataTable();
 			string strSQL = "SELECT * FROM CTDATPHONG";
@@ -64,7 +65,7 @@ namespace DesignForm.Forms
 
 		private void LoadDataGrid()
 		{
-			string strSQL = "SELECT TENDV, LOAIDV, SOLUONG, GIA1DONVI FROM DICHVU";
+			string strSQL = "SELECT MADV, TENDV, LOAIDV, SOLUONG, GIA1DONVI FROM DICHVU";
 			DataTable dtdata = new DataTable();
 			SqlConnection conn = Database.GetDBConnection();
 			conn.Open();
@@ -75,9 +76,37 @@ namespace DesignForm.Forms
 			this.dtSoucre = dtdata;
 		}
 
+		private void LoadDataGridDV()
+		{
+			string strSQL = "SELECT DVP.MADV ,(SELECT TENDV FROM DICHVU DV WHERE DV.MADV = DVP.MADV) AS TENDV, DVP.SOLUONG, DVP.NGAYSUDUNG, DVP.NGAYTRA, DVP.SOLUONG, DVP.GIA FROM DV_PHONG DVP WHERE MAPHONG = @MAPHONG";
+			DataTable dtdata = new DataTable();
+			SqlConnection conn = Database.GetDBConnection();
+			conn.Open();
+			SqlCommand cmd = new SqlCommand(strSQL, conn);
+			cmd.Parameters.AddWithValue("@MAPHONG", this.txtMaPhong.Text.Trim());
+			dtdata.Load(cmd.ExecuteReader());
+			conn.Close();
+			SetDataGridDV(dtdata);
+		}
+
+		private void SetDataGridDV(DataTable dtData)
+		{
+			this.dtgSoucre.DataSource = dtData;
+			this.dtgSoucre.Columns["MADV"].HeaderText = "Ma DV";
+			this.dtgSoucre.Columns["TENDV"].HeaderText = "Tên DV";
+			this.dtgSoucre.Columns["SOLUONG"].HeaderText = "Số lượng";
+			this.dtgSoucre.Columns["NGAYSUDUNG"].HeaderText = "Ngay su dung";
+			this.dtgSoucre.Columns["NGAYSUDUNG"].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm";
+			this.dtgSoucre.Columns["NGAYTRA"].HeaderText = "Ngay tra";
+			this.dtgSoucre.Columns["NGAYTRA"].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm";
+			this.dtgSoucre.Columns["GIA"].HeaderText = "Gia";
+			this.dtgSoucre.Columns["GIA"].DefaultCellStyle.Format = "###,##0";
+
+		}
 		private void SetDataGrid(DataTable dtData)
 		{
 			this.dtgDV.DataSource = dtData;
+			this.dtgDV.Columns["MADV"].Visible = false ;
 			this.dtgDV.Columns["TENDV"].HeaderText = "Tên";
 			this.dtgDV.Columns["LOAIDV"].Visible = false;
 			this.dtgDV.Columns["SOLUONG"].HeaderText = "Số lượng";
@@ -116,6 +145,7 @@ namespace DesignForm.Forms
 				ClearMH();
 				this.txtTenDv.Text = this.dtgDV.CurrentRow.Cells["TENDV"].Value.ToString();
 				this.txtGia.Text = Convert.ToInt32(this.dtgDV.CurrentRow.Cells["GIA1DONVI"].Value.ToString()).ToString("###,##0");
+				this.txtTong.Text = "0";
 			}
 			catch (Exception)
 			{
@@ -130,6 +160,7 @@ namespace DesignForm.Forms
 				ClearMH();
 				this.txtTenDv.Text = this.dtgDV.CurrentRow.Cells["TENDV"].Value.ToString();
 				this.txtGia.Text = Convert.ToInt32(this.dtgDV.CurrentRow.Cells["GIA1DONVI"].Value.ToString()).ToString("###,##0");
+				this.txtTong.Text = "0";
 			}
 			catch (Exception)
 			{
@@ -143,7 +174,7 @@ namespace DesignForm.Forms
 			{
 				if (!string.IsNullOrEmpty(this.txtSoluong.Text.Trim()))
 				{
-					this.txtTong.Text = (Convert.ToInt32(this.txtSoluong.Text.Trim().Replace(",",string.Empty)) * Convert.ToInt32(this.txtGia.Text.Trim().Replace(",", string.Empty))).ToString("###,##0");
+					this.txtTong.Text = (Convert.ToInt32(this.txtSoluong.Text.Trim().Replace(",", string.Empty)) * Convert.ToInt32(this.txtGia.Text.Trim().Replace(",", string.Empty))).ToString("###,##0");
 				}
 				else
 				{
@@ -191,6 +222,36 @@ namespace DesignForm.Forms
 				}
 			}
 
+		}
+
+		private void btnThem_Click(object sender, EventArgs e)
+		{ 
+			try
+			{
+				String strSql = "INSERT INTO DV_PHONG VALUES (@MAPHONG,@MADV,@SOLUONG,@NGAYSUDUNG,@NGAYTRA,@GIA)";
+				SqlConnection conn = Database.GetDBConnection();
+				conn.Open();
+				SqlCommand cmd = new SqlCommand(strSql, conn);
+				cmd.Parameters.AddWithValue("@MAPHONG", this.txtMaPhong.Text.Trim());
+				cmd.Parameters.AddWithValue("@MADV", this.dtgDV.CurrentRow.Cells["MADV"].Value.ToString());
+				cmd.Parameters.AddWithValue("@SOLUONG", this.txtSoluong.Text);
+				cmd.Parameters.AddWithValue("@NGAYSUDUNG", this.dateNgayThue.Value);
+				cmd.Parameters.AddWithValue("@NGAYTRA", this.dateNgayThue.Value);
+				cmd.Parameters.AddWithValue("@GIA", Convert.ToInt32(this.txtGia.Text.Replace(",",string.Empty)));
+				cmd.ExecuteNonQuery();
+				conn.Close();
+				LoadDataGridDV();
+				MessageBox.Show("Thực hiện thành công!");
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		private void txtMaPhong_TextChanged(object sender, EventArgs e)
+		{
+			LoadDataGridDV();
 		}
 	}
 }

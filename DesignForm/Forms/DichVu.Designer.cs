@@ -127,6 +127,7 @@
 			this.btnThem.TabStop = false;
 			this.btnThem.Text = "Thêm";
 			this.btnThem.UseVisualStyleBackColor = true;
+			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
 			// 
 			// dtgSoucre
 			// 
@@ -209,7 +210,8 @@
 			this.dtgDV.AllowUserToAddRows = false;
 			this.dtgDV.AllowUserToDeleteRows = false;
 			this.dtgDV.AllowUserToResizeRows = false;
-			this.dtgDV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.dtgDV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dtgDV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Brown;
@@ -221,7 +223,7 @@
 			this.dtgDV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dtgDV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dtgDV.EnableHeadersVisualStyles = false;
-			this.dtgDV.Location = new System.Drawing.Point(291, 27);
+			this.dtgDV.Location = new System.Drawing.Point(326, 27);
 			this.dtgDV.Name = "dtgDV";
 			this.dtgDV.ReadOnly = true;
 			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -234,7 +236,7 @@
 			this.dtgDV.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dtgDV.RowHeadersVisible = false;
 			this.dtgDV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dtgDV.Size = new System.Drawing.Size(536, 161);
+			this.dtgDV.Size = new System.Drawing.Size(501, 161);
 			this.dtgDV.TabIndex = 16;
 			this.dtgDV.TabStop = false;
 			this.dtgDV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDV_CellClick);
@@ -331,8 +333,6 @@
 			// 
 			// comboBox1
 			// 
-			this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox1.FormattingEnabled = true;
 			this.comboBox1.Items.AddRange(new object[] {
@@ -360,8 +360,6 @@
 			// 
 			// txtGia
 			// 
-			this.txtGia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtGia.Location = new System.Drawing.Point(96, 110);
 			this.txtGia.Name = "txtGia";
 			this.txtGia.Size = new System.Drawing.Size(110, 24);
@@ -382,8 +380,6 @@
 			// 
 			// txtSoluong
 			// 
-			this.txtSoluong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtSoluong.Location = new System.Drawing.Point(96, 83);
 			this.txtSoluong.MaxLength = 5;
 			this.txtSoluong.Name = "txtSoluong";
@@ -406,11 +402,9 @@
 			// 
 			// txtTenDv
 			// 
-			this.txtTenDv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtTenDv.Location = new System.Drawing.Point(96, 56);
 			this.txtTenDv.Name = "txtTenDv";
-			this.txtTenDv.Size = new System.Drawing.Size(189, 24);
+			this.txtTenDv.Size = new System.Drawing.Size(224, 24);
 			this.txtTenDv.TabIndex = 4;
 			// 
 			// label16
@@ -476,8 +470,9 @@
 			this.txtMaPhong.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
 			this.txtMaPhong.Location = new System.Drawing.Point(96, 7);
 			this.txtMaPhong.Name = "txtMaPhong";
-			this.txtMaPhong.Size = new System.Drawing.Size(111, 24);
+			this.txtMaPhong.Size = new System.Drawing.Size(73, 24);
 			this.txtMaPhong.TabIndex = 1;
+			this.txtMaPhong.TextChanged += new System.EventHandler(this.txtMaPhong_TextChanged);
 			// 
 			// label13
 			// 
